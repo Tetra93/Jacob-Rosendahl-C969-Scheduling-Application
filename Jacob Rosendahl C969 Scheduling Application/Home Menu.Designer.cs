@@ -44,6 +44,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.customerButton.TabIndex = 0;
             this.customerButton.Text = "Customer Information";
             this.customerButton.UseVisualStyleBackColor = true;
+            this.customerButton.Click += new System.EventHandler(this.CustomerButton_Click);
             // 
             // appointmentButton
             // 
@@ -53,6 +54,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.appointmentButton.TabIndex = 1;
             this.appointmentButton.Text = "Appointments";
             this.appointmentButton.UseVisualStyleBackColor = true;
+            this.appointmentButton.Click += new System.EventHandler(this.AppointmentButton_Click);
             // 
             // reportsButton
             // 
@@ -62,6 +64,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.reportsButton.TabIndex = 2;
             this.reportsButton.Text = "Generate Reports";
             this.reportsButton.UseVisualStyleBackColor = true;
+            this.reportsButton.Click += new System.EventHandler(this.ReportsButton_Click);
             // 
             // logoutButton
             // 
@@ -95,7 +98,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.Controls.Add(this.appointmentButton);
             this.Controls.Add(this.customerButton);
             this.Name = "HomeMenu";
-            this.Text = "Form1";
+            this.Text = "Main Menu";
             this.ResumeLayout(false);
 
         }

@@ -12,9 +12,12 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
     public partial class HomeMenu : Form
     {
+        public static HomeMenu homeMenu;
+
         public HomeMenu()
         {
             InitializeComponent();
+            homeMenu = this;
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)
@@ -35,6 +38,23 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 Environment.Exit(0);
             }
+        }
+
+        private void CustomerButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AppointmentButton_Click(object sender, EventArgs e)
+        {
+            Appointments appointments = new Appointments();
+            appointments.Show();
+            homeMenu.Hide();
+        }
+
+        private void ReportsButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

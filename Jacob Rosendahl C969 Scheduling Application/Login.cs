@@ -12,6 +12,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
 	public partial class Login : Form
 	{
+
 		public Login()
 		{
 			InitializeComponent();
@@ -30,7 +31,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             HomeMenu homeMenu = new HomeMenu();
             homeMenu.Show();
-            this.Hide();
+            Close();
         }
     }
 }

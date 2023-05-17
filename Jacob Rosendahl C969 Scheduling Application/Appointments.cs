@@ -12,9 +12,84 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
     public partial class Appointments : Form
     {
+        public static Appointments appointments;
         public Appointments()
         {
             InitializeComponent();
+            appointments = this;
         }
+
+        private void AllRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (allRadio.Checked)
+            {
+                fromDate.Enabled = false;
+                toDate.Enabled = false;
+            }
+        }
+
+        private void CurrentWeekRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (currentWeekRadio.Checked)
+            {
+                fromDate.Enabled = false;
+                toDate.Enabled = false;
+            }
+        }
+
+        private void CurrentMonthRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (currentMonthRadio.Checked)
+            {
+                fromDate.Enabled = false;
+                toDate.Enabled = false;
+            }
+        }
+
+        private void OtherRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (otherRadio.Checked)
+            {
+                fromDate.Enabled = true;
+                toDate.Enabled = true;
+            }
+        }
+
+        private void FromDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NewButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ModifyButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            HomeMenu.homeMenu.Show();
+        }
+
     }
 }
