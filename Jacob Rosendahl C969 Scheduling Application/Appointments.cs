@@ -75,7 +75,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         }
 
-        private void ModifyButton_Click(object sender, EventArgs e)
+        private void UpdateButton_Click(object sender, EventArgs e)
         {
 
         }
@@ -88,8 +88,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private void BackButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            HomeMenu.homeMenu.Show();
         }
 
+        private void Appointments_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            HomeMenu.homeMenu.Show();
+        }
     }
 }

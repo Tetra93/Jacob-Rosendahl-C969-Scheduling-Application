@@ -14,35 +14,22 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
     {
         public static HomeMenu homeMenu;
 
+        public static Login login;
+
+        public static bool canClose;
+
         public HomeMenu()
         {
             InitializeComponent();
             homeMenu = this;
-        }
-
-        private void LogoutButton_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Log out?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Close();
-                Login login = new Login();
-                login.Show();
-            }
-        }
-
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to close the application?", "Exit application?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Environment.Exit(0);
-            }
+            canClose = false;
         }
 
         private void CustomerButton_Click(object sender, EventArgs e)
         {
-
+            Customers customers = new Customers();
+            customers.Show();
+            homeMenu.Hide();
         }
 
         private void AppointmentButton_Click(object sender, EventArgs e)
@@ -55,6 +42,45 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private void ReportsButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Log out?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                MessageBox.Show(this.ToString());
+                Login login = new Login();
+                login.Show();
+                Close();
+            }
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void HomeMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (canClose == false)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to close the application?", "Exit application?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    canClose = true;
+                    Application.Exit();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void HomeMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            canClose = false;
         }
     }
 }

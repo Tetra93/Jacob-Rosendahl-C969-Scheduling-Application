@@ -29,11 +29,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.newButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
-            this.modifyButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.otherRadio = new System.Windows.Forms.RadioButton();
@@ -51,14 +51,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(26, 62);
             this.dataGridView1.Name = "dataGridView1";
@@ -87,23 +87,23 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // modifyButton
+            // updateButton
             // 
-            this.modifyButton.Location = new System.Drawing.Point(107, 250);
-            this.modifyButton.Name = "modifyButton";
-            this.modifyButton.Size = new System.Drawing.Size(75, 23);
-            this.modifyButton.TabIndex = 3;
-            this.modifyButton.Text = "Modify";
-            this.modifyButton.UseVisualStyleBackColor = true;
-            this.modifyButton.Click += new System.EventHandler(this.ModifyButton_Click);
+            this.updateButton.Location = new System.Drawing.Point(107, 250);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.TabIndex = 3;
+            this.updateButton.Text = "Update";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(377, 275);
+            this.backButton.Location = new System.Drawing.Point(391, 275);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(89, 23);
+            this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 4;
-            this.backButton.Text = "Previous Menu";
+            this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
@@ -201,15 +201,16 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(601, 310);
+            this.ClientSize = new System.Drawing.Size(495, 310);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.backButton);
-            this.Controls.Add(this.modifyButton);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.newButton);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Appointments";
             this.Text = "Appointments";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Appointments_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -222,7 +223,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button newButton;
         private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.Button modifyButton;
+        private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker fromDate;

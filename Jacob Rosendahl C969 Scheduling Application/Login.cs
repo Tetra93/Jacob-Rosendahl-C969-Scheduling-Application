@@ -12,10 +12,12 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
 	public partial class Login : Form
 	{
+        public static Login login;
 
 		public Login()
 		{
 			InitializeComponent();
+            login = this;
 		}
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -23,7 +25,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 			DialogResult dialogResult = MessageBox.Show("Are you sure you want to close the application?", "Exit application?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 			if (dialogResult == DialogResult.Yes)
 			{
-                Environment.Exit(0);
+                Application.Exit();
 			}
         }
 

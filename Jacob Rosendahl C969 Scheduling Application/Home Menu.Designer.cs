@@ -99,6 +99,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.Controls.Add(this.customerButton);
             this.Name = "HomeMenu";
             this.Text = "Main Menu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeMenu_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HomeMenu_FormClosed);
             this.ResumeLayout(false);
 
         }

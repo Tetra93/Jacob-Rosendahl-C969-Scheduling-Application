@@ -16,5 +16,48 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             InitializeComponent();
         }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                searchButton.PerformClick();
+            }
+        }
+
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Customers_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            HomeMenu.homeMenu.Show();
+        }
     }
 }
