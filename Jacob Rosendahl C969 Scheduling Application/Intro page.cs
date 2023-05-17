@@ -12,6 +12,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
     public partial class Intro : Form
     {
+
         public Intro()
         {
             InitializeComponent();

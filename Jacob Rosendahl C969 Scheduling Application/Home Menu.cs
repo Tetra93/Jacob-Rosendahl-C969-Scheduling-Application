@@ -49,7 +49,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Log out?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show(this.ToString());
+                canClose = true;
                 Login login = new Login();
                 login.Show();
                 Close();
@@ -60,6 +60,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             Application.Exit();
         }
+
+        //Added this to make the default close button also close the application
 
         private void HomeMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
