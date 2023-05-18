@@ -40,7 +40,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
             this.loginButton.TabIndex = 0;
-            this.loginButton.Text = "Login";
+            this.loginButton.Text = "&Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
@@ -50,7 +50,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 1;
-            this.exitButton.Text = "Exit";
+            this.exitButton.Text = "E&xit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 

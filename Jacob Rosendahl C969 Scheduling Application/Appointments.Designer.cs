@@ -29,7 +29,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.newButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
@@ -51,14 +51,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(26, 62);
             this.dataGridView1.Name = "dataGridView1";
@@ -73,7 +73,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(75, 23);
             this.newButton.TabIndex = 1;
-            this.newButton.Text = "Create new";
+            this.newButton.Text = "&Create new";
             this.newButton.UseVisualStyleBackColor = true;
             this.newButton.Click += new System.EventHandler(this.NewButton_Click);
             // 
@@ -83,7 +83,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 2;
-            this.deleteButton.Text = "Delete";
+            this.deleteButton.Text = "&Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -93,7 +93,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 3;
-            this.updateButton.Text = "Update";
+            this.updateButton.Text = "&Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
@@ -103,7 +103,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 4;
-            this.backButton.Text = "Back";
+            this.backButton.Text = "&Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 

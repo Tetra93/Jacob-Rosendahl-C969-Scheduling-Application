@@ -42,7 +42,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.customerButton.Name = "customerButton";
             this.customerButton.Size = new System.Drawing.Size(120, 35);
             this.customerButton.TabIndex = 0;
-            this.customerButton.Text = "Customer Information";
+            this.customerButton.Text = "&Customer Information";
             this.customerButton.UseVisualStyleBackColor = true;
             this.customerButton.Click += new System.EventHandler(this.CustomerButton_Click);
             // 
@@ -52,7 +52,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.appointmentButton.Name = "appointmentButton";
             this.appointmentButton.Size = new System.Drawing.Size(120, 35);
             this.appointmentButton.TabIndex = 1;
-            this.appointmentButton.Text = "Appointments";
+            this.appointmentButton.Text = "&Appointments";
             this.appointmentButton.UseVisualStyleBackColor = true;
             this.appointmentButton.Click += new System.EventHandler(this.AppointmentButton_Click);
             // 
@@ -62,7 +62,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.reportsButton.Name = "reportsButton";
             this.reportsButton.Size = new System.Drawing.Size(120, 35);
             this.reportsButton.TabIndex = 2;
-            this.reportsButton.Text = "Generate Reports";
+            this.reportsButton.Text = "Generate &Reports";
             this.reportsButton.UseVisualStyleBackColor = true;
             this.reportsButton.Click += new System.EventHandler(this.ReportsButton_Click);
             // 
@@ -72,7 +72,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(120, 35);
             this.logoutButton.TabIndex = 3;
-            this.logoutButton.Text = "Log Out";
+            this.logoutButton.Text = "&Log Out";
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
@@ -82,7 +82,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(120, 35);
             this.exitButton.TabIndex = 4;
-            this.exitButton.Text = "Exit";
+            this.exitButton.Text = "E&xit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 

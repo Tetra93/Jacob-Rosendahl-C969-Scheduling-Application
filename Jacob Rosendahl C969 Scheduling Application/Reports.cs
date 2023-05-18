@@ -16,5 +16,30 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             InitializeComponent();
         }
+
+        private void ReportTypeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PeopleListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Reports_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            HomeMenu.homeMenu.Show();
+        }
     }
 }

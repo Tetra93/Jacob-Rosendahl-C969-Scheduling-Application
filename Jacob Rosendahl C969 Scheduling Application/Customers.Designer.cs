@@ -66,7 +66,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
             this.addButton.TabIndex = 2;
-            this.addButton.Text = "Add";
+            this.addButton.Text = "&Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
@@ -76,7 +76,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 3;
-            this.updateButton.Text = "Update";
+            this.updateButton.Text = "&Update";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
@@ -86,7 +86,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 4;
-            this.deleteButton.Text = "Delete";
+            this.deleteButton.Text = "&Delete";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
@@ -96,7 +96,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 5;
-            this.backButton.Text = "Back";
+            this.backButton.Text = "&Back";
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 

@@ -43,6 +43,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(100, 20);
             this.usernameTextBox.TabIndex = 0;
+            this.usernameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UsernameTextBox_KeyDown);
             // 
             // passwordTextBox
             // 
@@ -51,6 +52,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.passwordTextBox.Size = new System.Drawing.Size(100, 20);
             this.passwordTextBox.TabIndex = 1;
             this.passwordTextBox.UseSystemPasswordChar = true;
+            this.passwordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordTextBox_KeyDown);
             // 
             // label1
             // 
@@ -76,7 +78,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(75, 23);
             this.loginButton.TabIndex = 2;
-            this.loginButton.Text = "Login";
+            this.loginButton.Text = "&Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
@@ -86,7 +88,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(75, 23);
             this.exitButton.TabIndex = 4;
-            this.exitButton.Text = "Exit";
+            this.exitButton.Text = "E&xit";
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 

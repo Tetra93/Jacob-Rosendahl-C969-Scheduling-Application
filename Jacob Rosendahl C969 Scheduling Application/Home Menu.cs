@@ -41,7 +41,9 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-
+            Reports reports = new Reports();
+            reports.Show();
+            homeMenu.Hide();
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)

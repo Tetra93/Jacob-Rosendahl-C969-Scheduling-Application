@@ -18,7 +18,23 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 		{
 			InitializeComponent();
             login = this;
-		}
+        }
+
+        private void UsernameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl(ActiveControl, true, true, true, true);
+            }
+        }
+
+        private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginButton.PerformClick();
+            }
+        }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
