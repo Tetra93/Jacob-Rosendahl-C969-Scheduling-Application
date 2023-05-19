@@ -75,6 +75,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.Controls.Add(this.loginButton);
             this.Name = "Intro";
             this.Text = "Welcome";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Intro_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
