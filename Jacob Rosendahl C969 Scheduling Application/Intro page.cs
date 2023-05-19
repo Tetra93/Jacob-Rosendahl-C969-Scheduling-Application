@@ -18,34 +18,17 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         public Intro()
         {
             InitializeComponent();
+            if(Program.language == "en")
+            {
+                label1.Text = "Bienvenida";
+                this.Text = "Bienvenida";
+                loginButton.Text = "Acceso";
+                exitButton.Text = "Salida";
+            }
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
-        {
-            //string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
-
-            //MySqlConnection conn = null;
-
-            //try
-            //{
-            //    conn = new MySqlConnection(constr);
-
-            //    conn.Open();
-
-            //    MessageBox.Show("It works, yo");
-            //}
-            //catch(MySqlException ex)
-            //{
-            //    MessageBox.Show("It don't work, yo");
-            //}
-            //finally
-            //{
-            //    if (conn != null)
-            //    {
-            //        conn.Close();
-            //    }
-            //}
-
+        { 
             Login login = new Login();
             login.Show();
             this.Hide();
@@ -53,10 +36,21 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to close the application?", "Close application?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
+            if (Program.language == "en")
             {
-                Close();
+                DialogResult dialogResult = MessageBox.Show("¿Está seguro de que desea cerrar la aplicación?", "¿Cierra la aplicación?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Close();
+                }
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to close the application?", "Close application?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Close();
+                }
             }
         }
     }

@@ -58,11 +58,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(12, 60);
+            this.label1.Location = new System.Drawing.Point(54, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 20);
+            this.label1.Size = new System.Drawing.Size(75, 20);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Scheduling Pro 2023";
+            this.label1.Text = "Welcome";
             // 
             // Intro
             // 
@@ -74,7 +74,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.loginButton);
             this.Name = "Intro";
-            this.Text = "Scheduling Pro 2023";
+            this.Text = "Welcome";
             this.ResumeLayout(false);
             this.PerformLayout();
 

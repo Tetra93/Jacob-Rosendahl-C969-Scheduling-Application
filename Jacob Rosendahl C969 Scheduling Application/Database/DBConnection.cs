@@ -22,8 +22,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                 Conn = new MySqlConnection(constr);
 
                 Conn.Open();
-
-                MessageBox.Show("It works, yo");
             }
             catch (MySqlException ex)
             {
