@@ -14,12 +14,22 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 	{
 
         public static bool canClose = false;
+        public static bool loginSuccessful = false;
         public static Login login;
 
 		public Login()
 		{
 			InitializeComponent();
+            if (Program.language == "es")
+            {
+                label1.Text = "Usuario";
+                label2.Text = "Contraseña";
+                this.Text = "Acceso";
+                loginButton.Text = "Acceso";
+                exitButton.Text = "Salida";
+            }
             canClose = false;
+            loginSuccessful = false;
             login = this;
         }
 
@@ -48,15 +58,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             HomeMenu homeMenu = new HomeMenu();
             homeMenu.Show();
-            canClose = true;
+            loginSuccessful = true;
             Close();
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (canClose == true)
+            if (loginSuccessful == true)
             {
-                Application.Exit();
             }
             else if (canClose == false && Program.language == "es")
             {
