@@ -56,10 +56,18 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            HomeMenu homeMenu = new HomeMenu();
-            homeMenu.Show();
-            loginSuccessful = true;
-            Close();
+            //Maybe use a lambda here to check the password
+            if (true)
+            {
+                HomeMenu homeMenu = new HomeMenu();
+                homeMenu.Show();
+                loginSuccessful = true;
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Username and password don't match");
+            }
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)

@@ -15,11 +15,23 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         public Reports()
         {
             InitializeComponent();
+            reportTypeBox.Items.Add("Reports by month");
+            reportTypeBox.Items.Add("Consultant schedules");
+            reportTypeBox.Items.Add("Third option");
+            peopleListBox.Items.Add("Person 1");
+            peopleListBox.Items.Add("Person 2");
         }
 
         private void ReportTypeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if(reportTypeBox.SelectedItem.ToString() == "Consultant schedules")
+            {
+                peopleListBox.Visible = true;
+            }
+            else
+            {
+                peopleListBox.Visible = false;
+            }
         }
 
         private void PeopleListBox_SelectedIndexChanged(object sender, EventArgs e)
