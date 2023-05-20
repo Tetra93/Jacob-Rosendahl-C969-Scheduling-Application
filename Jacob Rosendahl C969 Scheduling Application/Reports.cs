@@ -44,6 +44,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         }
 
+        private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                searchButton.PerformClick();
+            }
+        }
+
         private void BackButton_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -53,5 +61,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             HomeMenu.homeMenu.Show();
         }
+
     }
 }

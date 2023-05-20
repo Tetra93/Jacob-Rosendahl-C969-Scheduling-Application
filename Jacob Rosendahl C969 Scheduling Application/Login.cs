@@ -57,6 +57,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private void LoginButton_Click(object sender, EventArgs e)
         {
             //Maybe use a lambda here to check the password
+            //Maybe also create an exception if the username/password don't match
             if (true)
             {
                 HomeMenu homeMenu = new HomeMenu();
