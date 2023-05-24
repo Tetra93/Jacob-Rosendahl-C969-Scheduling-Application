@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Jacob_Rosendahl_C969_Scheduling_Application.Classes;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
@@ -16,6 +17,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         public Appointments()
         {
             InitializeComponent();
+            dataGridView1.DataSource = Appointment.Appointments;
             appointments = this;
         }
 

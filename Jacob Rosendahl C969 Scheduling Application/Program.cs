@@ -22,6 +22,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 			Application.SetCompatibleTextRenderingDefault(false);
 			DBConnection.StartConnection();
 			Customer.PopulateCustomers();
+			Appointment.PopulateAppointments();
 			Application.Run(new Intro());
 			DBConnection.CloseConnection();
 		}

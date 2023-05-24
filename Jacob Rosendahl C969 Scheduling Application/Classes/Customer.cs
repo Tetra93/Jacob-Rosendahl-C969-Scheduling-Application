@@ -54,6 +54,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                     });
                 }
             }
+            DBConnection.Reader.Close();
         }
     }
 }
