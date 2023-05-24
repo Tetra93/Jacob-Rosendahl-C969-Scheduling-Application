@@ -11,7 +11,15 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
 {
     class DBConnection
     {
-        public static MySqlConnection Conn { get; set; }
+        public static MySqlConnection Conn { set; get; }
+
+        public static string SqlString { set; get; }
+
+        public static MySqlCommand Cmd { set; get; }
+
+        public static MySqlDataAdapter Adp { set; get; }
+
+        public static MySqlDataReader Reader { set; get; }
 
         public static void StartConnection()
         {

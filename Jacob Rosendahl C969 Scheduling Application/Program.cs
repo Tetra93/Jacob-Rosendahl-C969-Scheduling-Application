@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Jacob_Rosendahl_C969_Scheduling_Application.Classes;
 using Jacob_Rosendahl_C969_Scheduling_Application.Database;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application
@@ -20,6 +21,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			DBConnection.StartConnection();
+			Customer.PopulateCustomers();
 			Application.Run(new Intro());
 			DBConnection.CloseConnection();
 		}
