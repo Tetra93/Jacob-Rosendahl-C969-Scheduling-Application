@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Jacob_Rosendahl_C969_Scheduling_Application.Classes;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
 	public partial class Login : Form
 	{
+        public static string UserName { set; get; }
+
+        public static string Password { set; get; }
 
         public static bool canClose = false;
         public static bool loginSuccessful = false;
@@ -58,17 +62,29 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             //Maybe use a lambda here to check the password
             //Maybe also create an exception if the username/password don't match
-            if (true)
+            User.UserLogin();
+            if (loginSuccessful == true)
             {
                 HomeMenu homeMenu = new HomeMenu();
                 homeMenu.Show();
-                loginSuccessful = true;
                 Close();
             }
             else
             {
                 MessageBox.Show("Username and password don't match");
             }
+        }
+
+
+
+        private void UsernameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UserName = usernameTextBox.Text.ToString();
+        }
+
+        private void PasswordTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Password = passwordTextBox.Text.ToString();
         }
 
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
@@ -101,6 +117,16 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
                 {
                     e.Cancel = true;
                 }
+            }
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (loginSuccessful == true)
+            {
+                this.Hide();
+                MessageBox.Show("Login successful");
+                Password = string.Empty;
             }
         }
     }
