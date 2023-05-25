@@ -17,7 +17,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         public Appointments()
         {
             InitializeComponent();
-            dataGridView1.DataSource = Appointment.Appointments;
+            dataGridView1.DataSource = Appointment.AllAppointments;
             appointments = this;
         }
 
@@ -27,6 +27,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 fromDate.Enabled = false;
                 toDate.Enabled = false;
+                dataGridView1.DataSource = Appointment.AllAppointments;
             }
         }
 
@@ -36,6 +37,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 fromDate.Enabled = false;
                 toDate.Enabled = false;
+                //Appointment.AppointmentsFiltered =
+                //    ((BindingList<Appointment>)(from Appointment in Appointment.AllAppointments
+                //    where Appointment.Date.Month == DateTime.Now.Month
+                //    select Appointment));
+                //dataGridView1.DataSource = Appointment.AppointmentsFiltered;
             }
         }
 
@@ -45,6 +51,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 fromDate.Enabled = false;
                 toDate.Enabled = false;
+                Appointment.AppointmentsFiltered.Clear();
+                foreach (Appointment appointment in Appointment.AllAppointments)
+                    if(appointment.Date.Month == DateTime.Now.Month)
+                    {
+                        Appointment.AppointmentsFiltered.Add(appointment);
+                    }
+                dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+                dataGridView1.Refresh();
             }
         }
 
@@ -54,17 +68,32 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 fromDate.Enabled = true;
                 toDate.Enabled = true;
+                Appointment.AppointmentsFiltered.Clear();
             }
         }
 
         private void FromDate_ValueChanged(object sender, EventArgs e)
         {
-
+            Appointment.AppointmentsFiltered.Clear();
+            foreach (Appointment appointment in Appointment.AllAppointments)
+                if (appointment.Date >= fromDate.Value && appointment.Date <= toDate.Value)
+                {
+                    Appointment.AppointmentsFiltered.Add(appointment);
+                }
+            dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+            dataGridView1.Refresh();
         }
 
         private void ToDate_ValueChanged(object sender, EventArgs e)
         {
-
+            Appointment.AppointmentsFiltered.Clear();
+            foreach (Appointment appointment in Appointment.AllAppointments)
+                if (appointment.Date >= fromDate.Value && appointment.Date <= toDate.Value)
+                {
+                    Appointment.AppointmentsFiltered.Add(appointment);
+                }
+            dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+            dataGridView1.Refresh();
         }
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -96,5 +125,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             HomeMenu.homeMenu.Show();
         }
+
     }
 }

@@ -21,12 +21,13 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
         public DateTime Date { set; get; }
 
-        public DateTime StartTime { set; get; }
+        public TimeSpan StartTime { set; get; }
 
-        public DateTime EndTime { set; get; }
+        public TimeSpan EndTime { set; get; }
 
+        public static BindingList<Appointment> AllAppointments = new BindingList<Appointment>();
 
-        public static BindingList<Appointment> Appointments = new BindingList<Appointment>();
+        public static BindingList<Appointment> AppointmentsFiltered = new BindingList<Appointment>();
 
         public static void PopulateAppointments()
         {
@@ -42,14 +43,19 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
             {
                 while (DBConnection.Reader.Read())
                 {
-                    Appointments.Add(new Appointment()
+                    //Using a lambda here to convert UTC to local time so I don't need to create
+                    //multiple variables or methods for changing the DateTime to UTC then changing
+                    //that to a TimeSpan to display only the time
+                    Func<DateTime, TimeSpan> localTime = d => d.TimeOfDay;
+
+                    AllAppointments.Add(new Appointment()
                     {
                         Customer = DBConnection.Reader.GetString(0),
                         UserName = DBConnection.Reader.GetString(1),
                         Type = DBConnection.Reader.GetString(2),
-                        Date = DBConnection.Reader.GetDateTime(3),
-                        StartTime = DBConnection.Reader.GetDateTime(3),
-                        EndTime = DBConnection.Reader.GetDateTime(4)
+                        Date = DBConnection.Reader.GetDateTime(3).Date,
+                        StartTime = localTime(DBConnection.Reader.GetDateTime(3).ToLocalTime()),
+                        EndTime = localTime(DBConnection.Reader.GetDateTime(4).ToLocalTime())
                     });
                 }
             }

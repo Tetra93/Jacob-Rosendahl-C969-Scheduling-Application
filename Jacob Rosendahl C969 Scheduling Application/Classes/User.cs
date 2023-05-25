@@ -34,6 +34,10 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                         UserName = DBConnection.Reader.GetString(0),
                         Password = DBConnection.Reader.GetString(1)
                     };
+                    //Using two lambdas here to validate the username and password.
+                    //They compare what was entered to the database record and return whether
+                    //or not they match. It makes it easier to read so I don't have
+                    //two long comparison expressions inside the following if statement
                     Func<User, bool> correctUsername = u => u.UserName == Login.UserName;
                     Func<User, bool> correctPassword = u => u.Password == Login.Password;
 
