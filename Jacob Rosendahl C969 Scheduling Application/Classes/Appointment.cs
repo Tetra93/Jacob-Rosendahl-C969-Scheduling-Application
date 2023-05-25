@@ -43,9 +43,10 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
             {
                 while (DBConnection.Reader.Read())
                 {
-                    //Using a lambda here to convert UTC to local time so I don't need to create
+                    //I'm using a lambda here to convert UTC to local time so I don't need to create
                     //multiple variables or methods for changing the DateTime to UTC then changing
-                    //that to a TimeSpan to display only the time
+                    //that to a TimeSpan to display only the time. The lambda returns only the 
+                    //TimeOfDay of the DateTime argument. The DateTime is given to it in local time.
                     Func<DateTime, TimeSpan> localTime = d => d.TimeOfDay;
 
                     AllAppointments.Add(new Appointment()

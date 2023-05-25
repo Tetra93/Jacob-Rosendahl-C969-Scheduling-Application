@@ -71,7 +71,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             }
             else
             {
-                MessageBox.Show("Username and password don't match");
+                if (Program.language == "es")
+                {
+                    MessageBox.Show("Combinación de nombre de usuario y contraseña no válidos", "Inicio de sesión no válido", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username and password combination", "Invalid login", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -125,7 +132,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             if (loginSuccessful == true)
             {
                 this.Hide();
-                MessageBox.Show("Login successful");
+                if (Program.language == "es")
+                {
+                    MessageBox.Show("Inicio de sesión exitoso");
+                }
+                else
+                {
+                    MessageBox.Show("Login successful");
+                }
                 Password = string.Empty;
             }
         }
