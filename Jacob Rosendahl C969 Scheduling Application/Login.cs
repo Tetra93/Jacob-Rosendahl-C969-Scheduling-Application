@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,15 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         public static bool canClose = false;
         public static bool loginSuccessful = false;
         public static Login login;
+        const string fileName = "Logins.txt";
 
 		public Login()
 		{
 			InitializeComponent();
+            if (!File.Exists(fileName))
+            {
+                using (FileStream file = File.Create(fileName)) { } ;
+            }
             if (Program.language == "es")
             {
                 label1.Text = "Usuario";
@@ -60,17 +66,23 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            //Maybe use a lambda here to check the password
-            //Maybe also create an exception if the username/password don't match
             User.UserLogin();
             if (loginSuccessful == true)
             {
                 HomeMenu homeMenu = new HomeMenu();
                 homeMenu.Show();
                 Close();
+                using (StreamWriter logs = new StreamWriter(fileName, true))
+                {
+                    logs.WriteLine($"{DateTime.Now} Successful login by {UserName}");
+                }
             }
             else
             {
+                using (StreamWriter logs = new StreamWriter(fileName, true))
+                {
+                    logs.WriteLine($"{DateTime.Now} Unsuccessful login attempt");
+                }
                 if (Program.language == "es")
                 {
                     MessageBox.Show("Combinación de nombre de usuario y contraseña no válidos", "Inicio de sesión no válido", MessageBoxButtons.OK);
