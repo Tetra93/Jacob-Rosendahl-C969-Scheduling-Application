@@ -25,6 +25,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             reportTypeBox.Items.Add("Number of appointments by month");
             reportTypeBox.Items.Add("Consultant schedules");
             reportTypeBox.Items.Add("Third option");
+            //foreach (User user in )
             peopleListBox.Items.Add("Person 1");
             peopleListBox.Items.Add("Person 2");
         }
