@@ -75,25 +75,49 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private void FromDate_ValueChanged(object sender, EventArgs e)
         {
             Appointment.AppointmentsFiltered.Clear();
-            foreach (Appointment appointment in Appointment.AllAppointments)
-                if (appointment.Date >= fromDate.Value && appointment.Date <= toDate.Value)
+            try
+            {
+                if (fromDate.Value > toDate.Value)
                 {
-                    Appointment.AppointmentsFiltered.Add(appointment);
+                    fromDate.Value = toDate.Value;
+                    throw new Exception("Starting date cannot be later than the ending date");
                 }
-            dataGridView1.DataSource = Appointment.AppointmentsFiltered;
-            dataGridView1.Refresh();
+                foreach (Appointment appointment in Appointment.AllAppointments)
+                    if (appointment.Date >= fromDate.Value && appointment.Date <= toDate.Value)
+                    {
+                        Appointment.AppointmentsFiltered.Add(appointment);
+                    }
+                dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ToDate_ValueChanged(object sender, EventArgs e)
         {
             Appointment.AppointmentsFiltered.Clear();
-            foreach (Appointment appointment in Appointment.AllAppointments)
-                if (appointment.Date >= fromDate.Value && appointment.Date <= toDate.Value)
+            try
+            {
+                if (fromDate.Value > toDate.Value)
                 {
-                    Appointment.AppointmentsFiltered.Add(appointment);
+                    toDate.Value = fromDate.Value;
+                    throw new Exception("Starting date cannot be later than the ending date");
                 }
-            dataGridView1.DataSource = Appointment.AppointmentsFiltered;
-            dataGridView1.Refresh();
+                foreach (Appointment appointment in Appointment.AllAppointments)
+                    if (appointment.Date >= fromDate.Value && appointment.Date <= toDate.Value)
+                    {
+                        Appointment.AppointmentsFiltered.Add(appointment);
+                    }
+                dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+                dataGridView1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)

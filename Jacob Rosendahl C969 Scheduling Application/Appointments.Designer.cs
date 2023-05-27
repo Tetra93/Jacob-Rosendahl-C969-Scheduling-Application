@@ -43,6 +43,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.allRadio = new System.Windows.Forms.RadioButton();
             this.currentWeekRadio = new System.Windows.Forms.RadioButton();
             this.currentMonthRadio = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,17 +62,17 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(26, 62);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 62);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(440, 182);
+            this.dataGridView1.Size = new System.Drawing.Size(477, 182);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             // 
             // newButton
             // 
-            this.newButton.Location = new System.Drawing.Point(26, 250);
+            this.newButton.Location = new System.Drawing.Point(12, 250);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(75, 23);
             this.newButton.TabIndex = 1;
@@ -80,7 +82,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(188, 250);
+            this.deleteButton.Location = new System.Drawing.Point(174, 250);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 2;
@@ -90,7 +92,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(107, 250);
+            this.updateButton.Location = new System.Drawing.Point(93, 250);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 3;
@@ -100,7 +102,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             // backButton
             // 
-            this.backButton.Location = new System.Drawing.Point(391, 275);
+            this.backButton.Location = new System.Drawing.Point(414, 275);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(75, 23);
             this.backButton.TabIndex = 4;
@@ -110,6 +112,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.otherRadio);
             this.panel1.Controls.Add(this.toDate);
             this.panel1.Controls.Add(this.fromDate);
@@ -117,15 +121,15 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.panel1.Controls.Add(this.allRadio);
             this.panel1.Controls.Add(this.currentWeekRadio);
             this.panel1.Controls.Add(this.currentMonthRadio);
-            this.panel1.Location = new System.Drawing.Point(26, 0);
+            this.panel1.Location = new System.Drawing.Point(12, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(440, 56);
+            this.panel1.Size = new System.Drawing.Size(477, 56);
             this.panel1.TabIndex = 5;
             // 
             // otherRadio
             // 
             this.otherRadio.AutoSize = true;
-            this.otherRadio.Location = new System.Drawing.Point(325, 12);
+            this.otherRadio.Location = new System.Drawing.Point(317, 7);
             this.otherRadio.Name = "otherRadio";
             this.otherRadio.Size = new System.Drawing.Size(51, 17);
             this.otherRadio.TabIndex = 12;
@@ -136,8 +140,9 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             // toDate
             // 
+            this.toDate.Checked = false;
             this.toDate.Enabled = false;
-            this.toDate.Location = new System.Drawing.Point(223, 33);
+            this.toDate.Location = new System.Drawing.Point(274, 33);
             this.toDate.Name = "toDate";
             this.toDate.Size = new System.Drawing.Size(200, 20);
             this.toDate.TabIndex = 11;
@@ -145,8 +150,9 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             // fromDate
             // 
+            this.fromDate.Checked = false;
             this.fromDate.Enabled = false;
-            this.fromDate.Location = new System.Drawing.Point(17, 33);
+            this.fromDate.Location = new System.Drawing.Point(42, 33);
             this.fromDate.Name = "fromDate";
             this.fromDate.Size = new System.Drawing.Size(200, 20);
             this.fromDate.TabIndex = 10;
@@ -155,7 +161,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 14);
+            this.label1.Location = new System.Drawing.Point(6, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 9;
@@ -164,7 +170,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // allRadio
             // 
             this.allRadio.AutoSize = true;
-            this.allRadio.Location = new System.Drawing.Point(90, 12);
+            this.allRadio.Location = new System.Drawing.Point(82, 7);
             this.allRadio.Name = "allRadio";
             this.allRadio.Size = new System.Drawing.Size(66, 17);
             this.allRadio.TabIndex = 6;
@@ -176,7 +182,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // currentWeekRadio
             // 
             this.currentWeekRadio.AutoSize = true;
-            this.currentWeekRadio.Location = new System.Drawing.Point(162, 12);
+            this.currentWeekRadio.Location = new System.Drawing.Point(154, 7);
             this.currentWeekRadio.Name = "currentWeekRadio";
             this.currentWeekRadio.Size = new System.Drawing.Size(74, 17);
             this.currentWeekRadio.TabIndex = 7;
@@ -188,7 +194,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // currentMonthRadio
             // 
             this.currentMonthRadio.AutoSize = true;
-            this.currentMonthRadio.Location = new System.Drawing.Point(242, 12);
+            this.currentMonthRadio.Location = new System.Drawing.Point(234, 7);
             this.currentMonthRadio.Name = "currentMonthRadio";
             this.currentMonthRadio.Size = new System.Drawing.Size(77, 17);
             this.currentMonthRadio.TabIndex = 8;
@@ -197,12 +203,30 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.currentMonthRadio.UseVisualStyleBackColor = true;
             this.currentMonthRadio.CheckedChanged += new System.EventHandler(this.CurrentMonthRadio_CheckedChanged);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(248, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "To";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "From";
+            // 
             // Appointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(495, 310);
+            this.ClientSize = new System.Drawing.Size(501, 310);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.updateButton);
@@ -234,5 +258,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private System.Windows.Forms.RadioButton currentMonthRadio;
         private System.Windows.Forms.RadioButton otherRadio;
         private System.Windows.Forms.DateTimePicker toDate;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }
