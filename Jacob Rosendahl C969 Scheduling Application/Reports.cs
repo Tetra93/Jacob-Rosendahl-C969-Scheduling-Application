@@ -25,9 +25,10 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             reportTypeBox.Items.Add("Number of appointments by month");
             reportTypeBox.Items.Add("Consultant schedules");
             reportTypeBox.Items.Add("Third option");
-            //foreach (User user in )
-            peopleListBox.Items.Add("Person 1");
-            peopleListBox.Items.Add("Person 2");
+            foreach (string user in User.userList)
+            {
+                peopleListBox.Items.Add(user);
+            }
         }
 
         private void ReportTypeBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -50,7 +51,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void PeopleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+                Appointment.AppointmentsFiltered.Clear();
+                foreach (Appointment appointment in Appointment.AllAppointments)
+                    if (appointment.UserName == peopleListBox.SelectedItem.ToString())
+                    {
+                        Appointment.AppointmentsFiltered.Add(appointment);
+                    }
+                dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+                dataGridView1.Refresh();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)

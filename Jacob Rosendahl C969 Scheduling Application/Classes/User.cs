@@ -20,6 +20,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
         public static bool success = false;
 
+        public static List<string> userList = new List<string>();
+
         public static void UserLogin()
         {
             DBConnection.SqlString = @"SELECT userName, password FROM user";
@@ -29,6 +31,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
             {
                 while (DBConnection.Reader.Read())
                 {
+                    userList.Add(DBConnection.Reader.GetString(0));
                     User DBUser = new User()
                     {
                         UserName = DBConnection.Reader.GetString(0),
