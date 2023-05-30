@@ -62,5 +62,34 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
             }
             DBConnection.Reader.Close();
         }
+
+        public static void UserFilter (string user)
+        {
+            AppointmentsFiltered.Clear();
+            foreach (Appointment appointment in AllAppointments)
+                if (appointment.UserName == user)
+                {
+                    AppointmentsFiltered.Add(appointment);
+                }
+        }
+
+        public static bool TimeCheck()
+        {
+            bool doAlert = false;
+            foreach (Appointment appointment in AppointmentsFiltered)
+            {
+                DateTime date = appointment.Date;
+                if (date == DateTime.Now.Date)
+                {
+                    TimeSpan time = appointment.StartTime - DateTime.Now.TimeOfDay;
+                    if (time.TotalMinutes <= 15)
+                    {
+                        doAlert = true;
+                        break;
+                    }
+                }
+            }
+            return doAlert;
+        }
     }
 }

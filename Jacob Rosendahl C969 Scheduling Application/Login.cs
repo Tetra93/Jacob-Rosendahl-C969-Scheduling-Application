@@ -20,6 +20,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         public static bool canClose = false;
         public static bool loginSuccessful = false;
+        public static bool appointmentSoon = false;
         public static Login login;
         const string fileName = "Logins.txt";
 
@@ -69,6 +70,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             User.UserLogin();
             if (loginSuccessful == true)
             {
+                Appointment.UserFilter(UserName);
+                appointmentSoon = Appointment.TimeCheck();
                 HomeMenu homeMenu = new HomeMenu();
                 homeMenu.Show();
                 Close();
@@ -147,10 +150,18 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
                 if (Program.language == "es")
                 {
                     MessageBox.Show("Inicio de sesión exitoso");
+                    if (appointmentSoon == true)
+                    {
+                        MessageBox.Show("Tiene una cita que comienza dentro de los próximos 15 minutos");
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Login successful");
+                    if (appointmentSoon == true)
+                    {
+                        MessageBox.Show("You have an appointment starting within the next 15 minutes");
+                    }
                 }
                 Password = string.Empty;
             }

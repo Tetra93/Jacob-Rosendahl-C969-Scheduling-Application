@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             InitializeComponent();
             dataGridView1.DataSource = Appointment.AllAppointments;
+            allRadio.Checked = true;
             appointments = this;
         }
 
@@ -37,11 +39,19 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 fromDate.Enabled = false;
                 toDate.Enabled = false;
-                //Appointment.AppointmentsFiltered =
-                //    ((BindingList<Appointment>)(from Appointment in Appointment.AllAppointments
-                //    where Appointment.Date.Month == DateTime.Now.Month
-                //    select Appointment));
-                //dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+                Appointment.AppointmentsFiltered.Clear();
+                foreach (Appointment appointment in Appointment.AllAppointments)
+                    if (appointment.Date.Year == DateTime.Now.Year)
+                    {
+                        int appointmentWeek = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(appointment.Date, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+                        int currentWeek = CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+                        if (appointmentWeek == currentWeek)
+                        {
+                            Appointment.AppointmentsFiltered.Add(appointment);
+                        }
+                    }
+                dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+                dataGridView1.Refresh();
             }
         }
 
@@ -53,16 +63,21 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
                 toDate.Enabled = false;
                 Appointment.AppointmentsFiltered.Clear();
                 foreach (Appointment appointment in Appointment.AllAppointments)
-                    if(appointment.Date.Month == DateTime.Now.Month)
+                    if (appointment.Date.Year == DateTime.Now.Year)
                     {
-                        Appointment.AppointmentsFiltered.Add(appointment);
+                        int appointmentMonth = appointment.Date.Month;
+                        int currentMonth = DateTime.Now.Month;
+                        if (appointmentMonth == currentMonth)
+                        {
+                            Appointment.AppointmentsFiltered.Add(appointment);
+                        }
                     }
                 dataGridView1.DataSource = Appointment.AppointmentsFiltered;
                 dataGridView1.Refresh();
             }
         }
 
-        private void OtherRadio_CheckedChanged(object sender, EventArgs e)
+            private void OtherRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (otherRadio.Checked)
             {
