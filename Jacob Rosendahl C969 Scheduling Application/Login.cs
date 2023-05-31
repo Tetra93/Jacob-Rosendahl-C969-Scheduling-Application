@@ -77,14 +77,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
                 Close();
                 using (StreamWriter logs = new StreamWriter(fileName, true))
                 {
-                    logs.WriteLine($"{DateTime.Now} Successful login by {UserName}");
+                    logs.WriteLine($"{DateTime.Now} {TimeZone.CurrentTimeZone.StandardName}: Successful login by {UserName}");
                 }
             }
             else
             {
                 using (StreamWriter logs = new StreamWriter(fileName, true))
                 {
-                    logs.WriteLine($"{DateTime.Now} Unsuccessful login attempt");
+                    logs.WriteLine($"{DateTime.Now} {TimeZone.CurrentTimeZone.StandardName}: Unsuccessful login attempt");
                 }
                 if (Program.language == "es")
                 {

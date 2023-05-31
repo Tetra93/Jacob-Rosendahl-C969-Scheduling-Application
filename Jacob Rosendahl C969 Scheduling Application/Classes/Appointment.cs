@@ -13,6 +13,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
     {
         public static Appointment appointment = new Appointment();
 
+        public int CustomerID { set; get; }
+
         public string Customer { set; get; }
 
         public string UserName { set; get; }
@@ -31,7 +33,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
         public static void PopulateAppointments()
         {
-            DBConnection.SqlString = @"SELECT c.customerName, u.userName, a.type, a.start, a.end
+            DBConnection.SqlString = @"SELECT c.customerID, c.customerName, u.userName, a.type, a.start, a.end
                                        FROM customer c
                                        JOIN appointment a
                                        ON c.customerID = a.customerID
@@ -51,12 +53,13 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
                     AllAppointments.Add(new Appointment()
                     {
-                        Customer = DBConnection.Reader.GetString(0),
-                        UserName = DBConnection.Reader.GetString(1),
-                        Type = DBConnection.Reader.GetString(2),
-                        Date = DBConnection.Reader.GetDateTime(3).Date,
-                        StartTime = localTime(DBConnection.Reader.GetDateTime(3).ToLocalTime()),
-                        EndTime = localTime(DBConnection.Reader.GetDateTime(4).ToLocalTime())
+                        CustomerID = DBConnection.Reader.GetInt32(0),
+                        Customer = DBConnection.Reader.GetString(1),
+                        UserName = DBConnection.Reader.GetString(2),
+                        Type = DBConnection.Reader.GetString(3),
+                        Date = DBConnection.Reader.GetDateTime(4).Date,
+                        StartTime = localTime(DBConnection.Reader.GetDateTime(4).ToLocalTime()),
+                        EndTime = localTime(DBConnection.Reader.GetDateTime(5).ToLocalTime())
                     });
                 }
             }
