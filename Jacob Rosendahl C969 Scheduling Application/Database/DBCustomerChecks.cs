@@ -9,10 +9,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
 {
     class DBCustomerChecks
     {
+        public static int LastCityID { set; get; }
+
+        public static int LastCountryID { set; get; }
+
         public static bool CustomerCheck()
         {
             bool customerExists = false;
-            DBConnection.SqlString = "SELECT * FROM customer";
+            DBConnection.SqlString = "SELECT customerID FROM customer";
             DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
             DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
             if (DBConnection.Reader.HasRows)
@@ -23,16 +27,18 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                     if(ID == AddModifyCustomer.CustomerID)
                     {
                         customerExists = true;
+                        break;
                     }
                 }
             }
+            DBConnection.Reader.Close();
             return customerExists;
         }
 
         public static bool AddressCheck()
         {
             bool addressExists = false;
-            DBConnection.SqlString = "SELECT * FROM customer";
+            DBConnection.SqlString = "SELECT * FROM address";
             DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
             DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
             if (DBConnection.Reader.HasRows)
@@ -46,20 +52,53 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                     }
                 }
             }
+            DBConnection.Reader.Close();
             return addressExists;
         }
 
         public static bool CityCheck()
         {
             bool cityExists = false;
-
+            string cityName;
+            DBConnection.SqlString = "SELECT * FROM city";
+            DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
+            DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
+            if (DBConnection.Reader.HasRows)
+            {
+                while (DBConnection.Reader.Read())
+                {
+                    cityName = DBConnection.Reader.GetString(1).ToUpper();
+                    LastCityID = DBConnection.Reader.GetInt32(0);
+                    if (cityName == AddModifyCustomer.City.ToUpper())
+                    {
+                        cityExists = true;
+                    }
+                }
+            }
+            DBConnection.Reader.Close();
             return cityExists;
         }
 
         public static bool CountryCheck()
         {
             bool countryExists = false;
-
+            string countryName;
+            DBConnection.SqlString = "SELECT * FROM country";
+            DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
+            DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
+            if (DBConnection.Reader.HasRows)
+            {
+                while (DBConnection.Reader.Read())
+                {
+                    countryName = DBConnection.Reader.GetString(1).ToUpper();
+                    LastCountryID = DBConnection.Reader.GetInt32(0);
+                    if (countryName == AddModifyCustomer.Country.ToUpper())
+                    {
+                        countryExists = true;
+                    }
+                }
+            }
+            DBConnection.Reader.Close();
             return countryExists;
         }
     }

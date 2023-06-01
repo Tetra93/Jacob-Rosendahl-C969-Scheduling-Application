@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Jacob_Rosendahl_C969_Scheduling_Application.Classes;
+using Jacob_Rosendahl_C969_Scheduling_Application.Database;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
@@ -19,20 +21,36 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         public static string Country { set; get; }
         public static string Phone { set; get; }
 
+        public static bool canSave = false;
+
         public AddModifyCustomer()
         {
             InitializeComponent();
+        }
+
+        public static void ClearAll()
+        {
+            CustomerID = 0;
+            CustomerName = string.Empty;
+            Address = string.Empty;
+            City = string.Empty;
+            Country = string.Empty;
+            Phone = string.Empty;
         }
 
         private void AddModifyCustomer_Load(object sender, EventArgs e)
         {
             if (this.Text == "Add Customer")
             {
-
+                CustomerID = (Customer.Customers.Last().CustomerID + 1);
+                IDTextBox.Text = CustomerID.ToString();
+                canSave = false;
             }
             if (this.Text == "Update Customer")
             {
-                IDTextBox.Text = Customers.ID.ToString();
+                CustomerID = Customers.ID;
+                IDTextBox.Text = CustomerID.ToString();
+                canSave = true;
             }
         }
 
@@ -63,11 +81,26 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    if (string.IsNullOrWhiteSpace(textBox.Text))
+                    {
+                        MessageBox.Show($"{textBox.Name} cannot be empty.", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                }
+            }
+            MessageBox.Show(DBCustomerChecks.CustomerCheck().ToString());
+            MessageBox.Show(DBCustomerChecks.AddressCheck().ToString());
+            MessageBox.Show(DBCustomerChecks.CityCheck().ToString());
+            MessageBox.Show(DBCustomerChecks.CountryCheck().ToString());
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            ClearAll();
             this.Close();
             Customers.customers.Show();
         }
