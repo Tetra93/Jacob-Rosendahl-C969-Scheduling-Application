@@ -43,6 +43,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.label6 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.postalTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -98,18 +100,18 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             // countryTextBox
             // 
-            this.countryTextBox.Location = new System.Drawing.Point(135, 133);
+            this.countryTextBox.Location = new System.Drawing.Point(135, 159);
             this.countryTextBox.Name = "countryTextBox";
             this.countryTextBox.Size = new System.Drawing.Size(100, 20);
-            this.countryTextBox.TabIndex = 3;
+            this.countryTextBox.TabIndex = 4;
             this.countryTextBox.TextChanged += new System.EventHandler(this.CountryTextBox_TextChanged);
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(135, 159);
+            this.phoneTextBox.Location = new System.Drawing.Point(135, 185);
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(100, 20);
-            this.phoneTextBox.TabIndex = 4;
+            this.phoneTextBox.TabIndex = 5;
             this.phoneTextBox.TextChanged += new System.EventHandler(this.PhoneTextBox_TextChanged);
             // 
             // label3
@@ -124,7 +126,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 162);
+            this.label4.Location = new System.Drawing.Point(35, 188);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(78, 13);
             this.label4.TabIndex = 10;
@@ -142,7 +144,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(35, 136);
+            this.label6.Location = new System.Drawing.Point(35, 162);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 12;
@@ -150,30 +152,49 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(38, 211);
+            this.saveButton.Location = new System.Drawing.Point(38, 237);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 5;
+            this.saveButton.TabIndex = 6;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(135, 211);
+            this.cancelButton.Location = new System.Drawing.Point(135, 237);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 6;
+            this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(35, 136);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(64, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Postal Code";
+            // 
+            // postalTextBox
+            // 
+            this.postalTextBox.Location = new System.Drawing.Point(135, 133);
+            this.postalTextBox.Name = "postalTextBox";
+            this.postalTextBox.Size = new System.Drawing.Size(100, 20);
+            this.postalTextBox.TabIndex = 3;
+            this.postalTextBox.TextChanged += new System.EventHandler(this.PostalTextBox_TextChanged);
             // 
             // AddModifyCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(263, 254);
+            this.ClientSize = new System.Drawing.Size(263, 281);
+            this.Controls.Add(this.postalTextBox);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label6);
@@ -211,5 +232,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox postalTextBox;
     }
 }

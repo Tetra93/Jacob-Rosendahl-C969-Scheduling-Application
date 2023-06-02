@@ -9,6 +9,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
 {
     class DBCustomerChecks
     {
+        public static int LastCustomerID { set; get; }
+
         public static int LastCityID { set; get; }
 
         public static int LastCountryID { set; get; }
@@ -25,6 +27,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                     while (DBConnection.Reader.Read())
                     {
                         int ID = DBConnection.Reader.GetInt32(0);
+                        LastCustomerID = ID;
                         if (ID == AddModifyCustomer.CustomerID)
                         {
                             customerExists = true;
@@ -48,9 +51,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                     while (DBConnection.Reader.Read())
                     {
                         int ID = DBConnection.Reader.GetInt32(0);
+                        LastCustomerID = ID;
                         if (ID == AddModifyCustomer.CustomerID)
                         {
                             addressExists = true;
+                            break;
                         }
                     }
                 }

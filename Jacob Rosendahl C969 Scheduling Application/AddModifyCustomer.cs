@@ -18,6 +18,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         public static string CustomerName { set; get; }
         public static string Address { set; get; }
         public static string City { set; get; }
+        public static string PostalCode { set; get; }
         public static string Country { set; get; }
         public static string Phone { set; get; }
 
@@ -34,6 +35,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             CustomerName = string.Empty;
             Address = string.Empty;
             City = string.Empty;
+            PostalCode = string.Empty;
             Country = string.Empty;
             Phone = string.Empty;
         }
@@ -69,6 +71,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             City = cityTextBox.Text;
         }
 
+        private void PostalTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PostalCode = postalTextBox.Text;
+        }
+
         private void CountryTextBox_TextChanged(object sender, EventArgs e)
         {
             Country = countryTextBox.Text;
@@ -92,10 +99,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
                     }
                 }
             }
-            MessageBox.Show(DBCustomerChecks.CustomerCheck().ToString());
-            MessageBox.Show(DBCustomerChecks.AddressCheck().ToString());
             DBCustomerAdd.AddCountry();
             DBCustomerAdd.AddCity();
+            DBCustomerAdd.AddCustomer();
+            DBCustomerAdd.AddAddress();
+            DBCustomerAdd.CustomerAddressCorrect();
             ClearAll();
             this.Close();
             Customers.customers.Show();
