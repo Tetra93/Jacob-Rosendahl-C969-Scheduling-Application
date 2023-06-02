@@ -18,20 +18,21 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
             bool customerExists = false;
             DBConnection.SqlString = "SELECT customerID FROM customer";
             DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
-            DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
-            if (DBConnection.Reader.HasRows)
+            using (DBConnection.Reader = DBConnection.Cmd.ExecuteReader())
             {
-                while (DBConnection.Reader.Read())
+                if (DBConnection.Reader.HasRows)
                 {
-                    int ID = DBConnection.Reader.GetInt32(0);
-                    if(ID == AddModifyCustomer.CustomerID)
+                    while (DBConnection.Reader.Read())
                     {
-                        customerExists = true;
-                        break;
+                        int ID = DBConnection.Reader.GetInt32(0);
+                        if (ID == AddModifyCustomer.CustomerID)
+                        {
+                            customerExists = true;
+                            break;
+                        }
                     }
                 }
             }
-            DBConnection.Reader.Close();
             return customerExists;
         }
 
@@ -40,19 +41,20 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
             bool addressExists = false;
             DBConnection.SqlString = "SELECT * FROM address";
             DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
-            DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
-            if (DBConnection.Reader.HasRows)
+            using (DBConnection.Reader = DBConnection.Cmd.ExecuteReader())
             {
-                while (DBConnection.Reader.Read())
+                if (DBConnection.Reader.HasRows)
                 {
-                    int ID = DBConnection.Reader.GetInt32(0);
-                    if (ID == AddModifyCustomer.CustomerID)
+                    while (DBConnection.Reader.Read())
                     {
-                        addressExists = true;
+                        int ID = DBConnection.Reader.GetInt32(0);
+                        if (ID == AddModifyCustomer.CustomerID)
+                        {
+                            addressExists = true;
+                        }
                     }
                 }
             }
-            DBConnection.Reader.Close();
             return addressExists;
         }
 
@@ -62,20 +64,22 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
             string cityName;
             DBConnection.SqlString = "SELECT * FROM city";
             DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
-            DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
-            if (DBConnection.Reader.HasRows)
+            using (DBConnection.Reader = DBConnection.Cmd.ExecuteReader())
             {
-                while (DBConnection.Reader.Read())
+                if (DBConnection.Reader.HasRows)
                 {
-                    cityName = DBConnection.Reader.GetString(1).ToUpper();
-                    LastCityID = DBConnection.Reader.GetInt32(0);
-                    if (cityName == AddModifyCustomer.City.ToUpper())
+                    while (DBConnection.Reader.Read())
                     {
-                        cityExists = true;
+                        cityName = DBConnection.Reader.GetString(1).ToUpper();
+                        LastCityID = DBConnection.Reader.GetInt32(0);
+                        if (cityName == AddModifyCustomer.City.ToUpper())
+                        {
+                            cityExists = true;
+                            break;
+                        }
                     }
                 }
             }
-            DBConnection.Reader.Close();
             return cityExists;
         }
 
@@ -85,20 +89,22 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
             string countryName;
             DBConnection.SqlString = "SELECT * FROM country";
             DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
-            DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
-            if (DBConnection.Reader.HasRows)
+            using (DBConnection.Reader = DBConnection.Cmd.ExecuteReader())
             {
-                while (DBConnection.Reader.Read())
+                if (DBConnection.Reader.HasRows)
                 {
-                    countryName = DBConnection.Reader.GetString(1).ToUpper();
-                    LastCountryID = DBConnection.Reader.GetInt32(0);
-                    if (countryName == AddModifyCustomer.Country.ToUpper())
+                    while (DBConnection.Reader.Read())
                     {
-                        countryExists = true;
+                        countryName = DBConnection.Reader.GetString(1).ToUpper();
+                        LastCountryID = DBConnection.Reader.GetInt32(0);
+                        if (countryName == AddModifyCustomer.Country.ToUpper())
+                        {
+                            countryExists = true;
+                            break;
+                        }
                     }
                 }
             }
-            DBConnection.Reader.Close();
             return countryExists;
         }
     }

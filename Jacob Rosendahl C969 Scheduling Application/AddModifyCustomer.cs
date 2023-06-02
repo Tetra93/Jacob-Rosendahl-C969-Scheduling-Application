@@ -94,8 +94,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             }
             MessageBox.Show(DBCustomerChecks.CustomerCheck().ToString());
             MessageBox.Show(DBCustomerChecks.AddressCheck().ToString());
-            MessageBox.Show(DBCustomerChecks.CityCheck().ToString());
-            MessageBox.Show(DBCustomerChecks.CountryCheck().ToString());
+            DBCustomerAdd.AddCountry();
+            DBCustomerAdd.AddCity();
+            ClearAll();
+            this.Close();
+            Customers.customers.Show();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
