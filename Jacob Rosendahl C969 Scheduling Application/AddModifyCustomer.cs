@@ -106,6 +106,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             DBCustomerAdd.CustomerAddressCorrect();
             ClearAll();
             this.Close();
+            Customer.PopulateCustomers();
             Customers.customers.Show();
         }
 

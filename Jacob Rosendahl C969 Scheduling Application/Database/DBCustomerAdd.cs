@@ -38,7 +38,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
         {
             if (DBCustomerChecks.CustomerCheck() == true)
             {
-                DBConnection.SqlString = $"UPDATE customer" +
+                DBConnection.SqlString = $"UPDATE customer " +
                     $"SET addressId = {DBCustomerChecks.LastCustomerID} " +
                     $"WHERE customerId = {DBCustomerChecks.LastCustomerID}";
                 DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);

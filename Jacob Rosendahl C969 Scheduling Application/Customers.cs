@@ -90,5 +90,10 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             HomeMenu.homeMenu.Show();
         }
+
+        private void Customers_Shown(object sender, EventArgs e)
+        {
+            dataGridView1.Refresh();
+        }
     }
 }

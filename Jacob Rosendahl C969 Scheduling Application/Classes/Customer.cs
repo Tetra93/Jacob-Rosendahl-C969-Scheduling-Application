@@ -29,6 +29,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
         public static void PopulateCustomers()
         {
+            Customers.Clear();
             DBConnection.SqlString = @"SELECT u.customerID, u.customerName, a.address, a.phone, i.city, o.country 
                                        FROM customer u 
                                        JOIN address a 
