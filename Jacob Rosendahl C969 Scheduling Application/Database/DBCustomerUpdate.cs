@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
 {
@@ -10,23 +11,27 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
     {
         public static void UpdateCustomer()
         {
-
+            if (DBCustomerChecks.CustomerCheck(AddUpdateCustomer.CustomerID) == true)
+            {
+                DBConnection.SqlString = $"UPDATE customer " +
+                    $"SET customerName = \"{AddUpdateCustomer.CustomerName}\", lastUpdate = CURRENT_TIMESTAMP(), lastUpdateBy = \"{Login.UserName}\" " +
+                    $"WHERE customerId = {DBCustomerChecks.LastCustomerID}";
+                DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
+                DBConnection.Cmd.ExecuteNonQuery();
+            }
         }
 
         public static void UpdateAddress()
         {
-
+            if (DBCustomerChecks.AddressCheck(AddUpdateCustomer.CustomerID) == true)
+            {
+                DBCustomerChecks.CityCheck();
+                DBConnection.SqlString = $"UPDATE address " +
+                    $"SET address = \"{AddUpdateCustomer.Address}\", cityId = {DBCustomerChecks.LastCityID}, postalCode = \"{AddUpdateCustomer.PostalCode}\", phone = \"{AddUpdateCustomer.Phone}\", lastUpdate = CURRENT_TIMESTAMP(), lastUpdateBy = \"{Login.UserName}\" " +
+                    $"WHERE addressId = {DBCustomerChecks.LastCustomerID}";
+                DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
+                DBConnection.Cmd.ExecuteNonQuery();
+            }
         }
-
-        public static void UpdateCity()
-        {
-
-        }
-
-        public static void UpdateCountry()
-        {
-
-        }
-
     }
 }

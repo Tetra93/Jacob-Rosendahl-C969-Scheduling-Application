@@ -11,6 +11,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
     {
         public static int LastCustomerID { set; get; }
 
+        public static string PostalCode { set; get; }
+
         public static int LastCityID { set; get; }
 
         public static int LastCountryID { set; get; }
@@ -52,6 +54,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                     {
                         int ID = DBConnection.Reader.GetInt32(0);
                         LastCustomerID = ID;
+                        PostalCode = DBConnection.Reader.GetString(4);
                         if (ID == inputID)
                         {
                             addressExists = true;
@@ -77,13 +80,17 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                     {
                         cityName = DBConnection.Reader.GetString(1).ToUpper();
                         LastCityID = DBConnection.Reader.GetInt32(0);
-                        if (cityName == AddModifyCustomer.City.ToUpper())
+                        if (cityName == AddUpdateCustomer.City.ToUpper())
                         {
                             cityExists = true;
                             break;
                         }
                     }
                 }
+            }
+            if (cityExists == false)
+            {
+                LastCityID++;
             }
             return cityExists;
         }
@@ -102,13 +109,17 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                     {
                         countryName = DBConnection.Reader.GetString(1).ToUpper();
                         LastCountryID = DBConnection.Reader.GetInt32(0);
-                        if (countryName == AddModifyCustomer.Country.ToUpper())
+                        if (countryName == AddUpdateCustomer.Country.ToUpper())
                         {
                             countryExists = true;
                             break;
                         }
                     }
                 }
+            }
+            if(countryExists == false)
+            {
+                LastCountryID++;
             }
             return countryExists;
         }

@@ -96,7 +96,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            AddModifyCustomer addModifyCustomer = new AddModifyCustomer();
+            AddUpdateCustomer addModifyCustomer = new AddUpdateCustomer();
             addModifyCustomer.Text = "Add Customer";
             addModifyCustomer.Show();
             this.Hide();
@@ -104,7 +104,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            AddModifyCustomer addModifyCustomer = new AddModifyCustomer();
+            AddUpdateCustomer addModifyCustomer = new AddUpdateCustomer();
             addModifyCustomer.Text = "Update Customer";
             addModifyCustomer.Show();
             this.Hide();

@@ -12,7 +12,7 @@ using Jacob_Rosendahl_C969_Scheduling_Application.Database;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
-    public partial class AddModifyCustomer : Form
+    public partial class AddUpdateCustomer : Form
     {
         public static int CustomerID { set; get; }
         public static string CustomerName { set; get; }
@@ -24,7 +24,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         public static bool canSave = false;
 
-        public AddModifyCustomer()
+        public AddUpdateCustomer()
         {
             InitializeComponent();
         }
@@ -52,6 +52,13 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 CustomerID = Customers.ID;
                 IDTextBox.Text = CustomerID.ToString();
+                nameTextBox.Text = Customer.Customers[Customers.ID -1].Name;
+                addressTextBox.Text = Customer.Customers[Customers.ID - 1].Address;
+                cityTextBox.Text = Customer.Customers[Customers.ID - 1].City;
+                DBCustomerChecks.AddressCheck(Customers.ID);
+                postalTextBox.Text = DBCustomerChecks.PostalCode;
+                countryTextBox.Text = Customer.Customers[Customers.ID - 1].Country;
+                phoneTextBox.Text = Customer.Customers[Customers.ID - 1].Phone;
                 canSave = true;
             }
         }
@@ -101,9 +108,17 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             }
             DBCustomerAdd.AddCountry();
             DBCustomerAdd.AddCity();
-            DBCustomerAdd.AddCustomer();
-            DBCustomerAdd.AddAddress();
-            DBCustomerAdd.CustomerAddressCorrect();
+            if (this.Text == "Add Customer")
+            {
+                DBCustomerAdd.AddCustomer();
+                DBCustomerAdd.AddAddress();
+                DBCustomerAdd.CustomerAddressCorrect();
+            }
+            else if (this.Text == "Update Customer")
+            {
+                DBCustomerUpdate.UpdateCustomer();
+                DBCustomerUpdate.UpdateAddress();
+            }
             ClearAll();
             this.Close();
             Customer.PopulateCustomers();

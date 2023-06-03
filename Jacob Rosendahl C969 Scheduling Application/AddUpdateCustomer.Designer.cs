@@ -1,7 +1,7 @@
 ﻿
 namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
-    partial class AddModifyCustomer
+    partial class AddUpdateCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -187,7 +187,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.postalTextBox.TabIndex = 3;
             this.postalTextBox.TextChanged += new System.EventHandler(this.PostalTextBox_TextChanged);
             // 
-            // AddModifyCustomer
+            // AddUpdateCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -209,7 +209,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.Controls.Add(this.IDTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "AddModifyCustomer";
+            this.Name = "AddUpdateCustomer";
             this.Text = "Add Customer";
             this.Load += new System.EventHandler(this.AddModifyCustomer_Load);
             this.ResumeLayout(false);
