@@ -12,7 +12,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
 
         public static void AddCustomer()
         {
-            if (DBCustomerChecks.CustomerCheck() == false)
+            if (DBCustomerChecks.CustomerCheck(AddModifyCustomer.CustomerID) == false)
             {
                 DBConnection.SqlString = $"INSERT INTO customer (customerId, customerName, addressId, active, createDate, createdBy, lastUpdate, lastUpdateBy)" +
                     $" VALUES ({DBCustomerChecks.LastCustomerID + 1}, \"{AddModifyCustomer.CustomerName}\", {DBCustomerChecks.LastCustomerID}, 1, CURRENT_TIMESTAMP(), \"{Login.UserName}\", CURRENT_TIMESTAMP(), \"{Login.UserName}\")";
@@ -23,10 +23,10 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
 
         public static void AddAddress()
         {
-            if (DBCustomerChecks.AddressCheck() == false)
+            if (DBCustomerChecks.AddressCheck(AddModifyCustomer.CustomerID) == false)
             {
                 DBCustomerChecks.CityCheck();
-                DBCustomerChecks.CustomerCheck();
+                DBCustomerChecks.CustomerCheck(AddModifyCustomer.CustomerID);
                 DBConnection.SqlString = $"INSERT INTO address (addressId, address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdate, lastUpdateBy)" +
                     $" VALUES ({DBCustomerChecks.LastCustomerID}, \"{AddModifyCustomer.Address}\", \" \", {DBCustomerChecks.LastCityID}, \"{AddModifyCustomer.PostalCode}\", \"{AddModifyCustomer.Phone}\", CURRENT_TIMESTAMP(), \"{Login.UserName}\", CURRENT_TIMESTAMP(), \"{Login.UserName}\")";
                 DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
@@ -36,7 +36,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
 
         public static void CustomerAddressCorrect()
         {
-            if (DBCustomerChecks.CustomerCheck() == true)
+            if (DBCustomerChecks.CustomerCheck(AddModifyCustomer.CustomerID) == true)
             {
                 DBConnection.SqlString = $"UPDATE customer " +
                     $"SET addressId = {DBCustomerChecks.LastCustomerID} " +

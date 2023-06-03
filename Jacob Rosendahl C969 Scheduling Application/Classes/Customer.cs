@@ -57,5 +57,13 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
             }
             DBConnection.Reader.Close();
         }
+
+        public override string ToString() =>
+            $"CustomerID = {CustomerID}, " +
+            $"Name = {Name}, " +
+            $"Address = {Address}, " +
+            $"Phone = {Phone}, " +
+            $"City = {City}, " +
+            $"Country = {Country}";
     }
 }

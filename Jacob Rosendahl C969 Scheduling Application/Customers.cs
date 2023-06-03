@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Jacob_Rosendahl_C969_Scheduling_Application.Classes;
+using Jacob_Rosendahl_C969_Scheduling_Application.Database;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
@@ -24,9 +25,36 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             customers = this;
         }
 
+        private void DataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridView1.ClearSelection();
+        }
+
         private void SearchButton_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.ClearSelection();
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Green;
+            int searchCount = 0;
+            string searchValue = searchTextBox.Text.ToString();
+            if (!string.IsNullOrWhiteSpace(searchValue))
+            {
+                for (int i = 0; i < Customer.Customers.Count; i++)
+                {
+                    if (Customer.Customers[i].ToString().ToUpper().Contains(searchValue.ToUpper()))
+                    {
+                        searchCount++;
+                        dataGridView1.Rows[i].Selected = true;
+                    }
+                }
+                if (searchCount == 0)
+                {
+                    MessageBox.Show("No results found.");
+                }
+                else
+                {
+                    MessageBox.Show($"{searchCount} results found");
+                }
+            }
         }
 
         private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -35,6 +63,12 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 searchButton.PerformClick();
             }
+        }
+
+        private void SearchTextBox_Validated(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
         }
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -78,7 +112,16 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-
+            if (dataGridView1.CurrentRow.Selected)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this customer?", "Delete Customer?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    DBCustomerDelete.DeleteCustomer();
+                    DBCustomerDelete.DeleteAddress();
+                    Customer.PopulateCustomers();
+                }
+            }
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -95,5 +138,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             dataGridView1.Refresh();
         }
+
     }
 }

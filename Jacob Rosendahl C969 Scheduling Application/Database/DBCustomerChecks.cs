@@ -15,7 +15,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
 
         public static int LastCountryID { set; get; }
 
-        public static bool CustomerCheck()
+        public static bool CustomerCheck(int inputID)
         {
             bool customerExists = false;
             DBConnection.SqlString = "SELECT customerID FROM customer";
@@ -28,7 +28,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                     {
                         int ID = DBConnection.Reader.GetInt32(0);
                         LastCustomerID = ID;
-                        if (ID == AddModifyCustomer.CustomerID)
+                        if (ID == inputID)
                         {
                             customerExists = true;
                             break;
@@ -39,7 +39,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
             return customerExists;
         }
 
-        public static bool AddressCheck()
+        public static bool AddressCheck(int inputID)
         {
             bool addressExists = false;
             DBConnection.SqlString = "SELECT * FROM address";
@@ -52,7 +52,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
                     {
                         int ID = DBConnection.Reader.GetInt32(0);
                         LastCustomerID = ID;
-                        if (ID == AddModifyCustomer.CustomerID)
+                        if (ID == inputID)
                         {
                             addressExists = true;
                             break;
