@@ -142,12 +142,18 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void NewButton_Click(object sender, EventArgs e)
         {
-
+            AddUpdateAppointments addUpdateAppointments = new AddUpdateAppointments();
+            addUpdateAppointments.Text = "New Appointment";
+            addUpdateAppointments.Show();
+            this.Hide();
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-
+            AddUpdateAppointments addUpdateAppointments = new AddUpdateAppointments();
+            addUpdateAppointments.Text = "Update Appointment";
+            addUpdateAppointments.Show();
+            this.Hide();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)

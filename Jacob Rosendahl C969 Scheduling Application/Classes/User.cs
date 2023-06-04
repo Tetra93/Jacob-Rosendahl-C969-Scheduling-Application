@@ -48,7 +48,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                     if (correctUsername(DBUser) && correctPassword(DBUser))
                     {
                         Login.loginSuccessful = true;
-                        break;
                     }
                 }
             }

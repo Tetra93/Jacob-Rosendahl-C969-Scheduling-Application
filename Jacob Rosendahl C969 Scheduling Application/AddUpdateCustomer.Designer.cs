@@ -211,6 +211,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.Controls.Add(this.label1);
             this.Name = "AddUpdateCustomer";
             this.Text = "Add Customer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddUpdateCustomer_FormClosed);
             this.Load += new System.EventHandler(this.AddModifyCustomer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

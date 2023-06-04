@@ -114,6 +114,12 @@
     </Compile>
     <Compile Include="Database\DBCustomerDelete.cs" />
     <Compile Include="Database\DBCustomerUpdate.cs" />
+    <Compile Include="AddUpdateAppointments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUpdateAppointments.Designer.cs">
+      <DependentUpon>AddUpdateAppointments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddUpdateAppointments.resx">
+      <DependentUpon>AddUpdateAppointments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Appointments.resx">
       <DependentUpon>Appointments.cs</DependentUpon>
     </EmbeddedResource>

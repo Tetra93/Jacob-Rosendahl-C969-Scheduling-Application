@@ -17,7 +17,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
         public string Customer { set; get; }
 
-        public string UserName { set; get; }
+        public string Consultant { set; get; }
 
         public string Type { set; get; }
 
@@ -55,7 +55,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                     {
                         CustomerID = DBConnection.Reader.GetInt32(0),
                         Customer = DBConnection.Reader.GetString(1),
-                        UserName = DBConnection.Reader.GetString(2),
+                        Consultant = DBConnection.Reader.GetString(2),
                         Type = DBConnection.Reader.GetString(3),
                         Date = DBConnection.Reader.GetDateTime(4).Date,
                         StartTime = localTime(DBConnection.Reader.GetDateTime(4).ToLocalTime()),
@@ -70,7 +70,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
         {
             AppointmentsFiltered.Clear();
             foreach (Appointment appointment in AllAppointments)
-                if (appointment.UserName == user)
+                if (appointment.Consultant == user)
                 {
                     AppointmentsFiltered.Add(appointment);
                 }

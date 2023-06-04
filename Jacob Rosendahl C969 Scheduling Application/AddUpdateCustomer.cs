@@ -122,15 +122,17 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             ClearAll();
             this.Close();
             Customer.PopulateCustomers();
-            Customers.customers.Show();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
             ClearAll();
             this.Close();
-            Customers.customers.Show();
         }
 
+        private void AddUpdateCustomer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Customers.customers.Show();
+        }
     }
 }
