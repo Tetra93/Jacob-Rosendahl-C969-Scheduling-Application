@@ -13,7 +13,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
     public partial class Reports : Form
     {
-        public static BindingList<object> appointmentsByMonth = new BindingList<object>();
 
         public Reports()
         {
