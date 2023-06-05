@@ -15,46 +15,60 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
     {
         public static BindingList<object> appointmentsByMonth = new BindingList<object>();
 
-        public static BindingList<object> consultantSchedule = new BindingList<object>();
-
-        public static BindingList<object> thirdList = new BindingList<object>();
-
         public Reports()
         {
             InitializeComponent();
             reportTypeBox.Items.Add("Number of appointments by month");
             reportTypeBox.Items.Add("Consultant schedules");
-            reportTypeBox.Items.Add("Third option");
-            foreach (string user in User.userList)
-            {
-                peopleListBox.Items.Add(user);
-            }
+            reportTypeBox.Items.Add("Customer schedules");
         }
 
         private void ReportTypeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(reportTypeBox.SelectedItem.ToString() == "Number of appointments by month")
-            {
-                AppointmentMonths.CountMonths();
-                dataGridView1.DataSource = AppointmentMonths.appointmentMonths;
-                dataGridView1.Refresh();
-            }
-            if(reportTypeBox.SelectedItem.ToString() != "Consultant schedules")
+            dataGridView1.DataSource = string.Empty;
+            if (reportTypeBox.SelectedItem.ToString() == "Number of appointments by month")
             {
                 peopleListBox.Visible = false;
+                AppointmentTypesByMonth.CountMonths();
+                dataGridView1.DataSource = AppointmentTypesByMonth.appointmentMonths;
+                dataGridView1.Refresh();
             }
-            else
+            else if(reportTypeBox.SelectedItem.ToString() == "Consultant schedules")
             {
+                peopleListBox.Items.Clear();
+                foreach (string user in User.userList)
+                {
+                    peopleListBox.Items.Add(user);
+                }
+                peopleListBox.Visible = true;
+            }
+            if(reportTypeBox.SelectedItem.ToString() == "Customer schedules")
+            {
+                peopleListBox.Items.Clear();
+                foreach(Customer customer in Customer.Customers)
+                {
+                    peopleListBox.Items.Add(customer.Name);
+                }
                 peopleListBox.Visible = true;
             }
         }
 
         private void PeopleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string user = peopleListBox.SelectedItem.ToString();
-            Appointment.UserFilter(user);
-            dataGridView1.DataSource = Appointment.AppointmentsFiltered;
-            dataGridView1.Refresh();
+            if (reportTypeBox.SelectedItem.ToString() == "Consultant schedules")
+            {
+                string user = peopleListBox.SelectedItem.ToString();
+                Appointment.UserFilter(user);
+                dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+                dataGridView1.Refresh();
+            }
+            else if (reportTypeBox.SelectedItem.ToString() == "Customer schedules")
+            {
+                string customer = peopleListBox.SelectedItem.ToString();
+                Appointment.CustomerFilter(customer);
+                dataGridView1.DataSource = Appointment.AppointmentsFiltered;
+                dataGridView1.Refresh();
+            }
         }
 
         private void SearchButton_Click(object sender, EventArgs e)

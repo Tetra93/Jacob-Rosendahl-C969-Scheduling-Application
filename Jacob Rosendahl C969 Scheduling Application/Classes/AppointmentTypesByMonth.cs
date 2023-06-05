@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 {
-    class AppointmentMonths
+    class AppointmentTypesByMonth
     {
         public string Month { set; get; }
 
@@ -15,7 +15,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
         //public AppointmentMonths(string Month, int NumberOfAppointments) { }
 
-        public static BindingList<AppointmentMonths> appointmentMonths;
+        public static BindingList<AppointmentTypesByMonth> appointmentMonths;
 
         public static void CountMonths()
         {
@@ -28,76 +28,76 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
             {
                 counts[appointment.Date.Month]++;
             }
-            appointmentMonths = new BindingList<AppointmentMonths>();
-            AppointmentMonths newMonths1 = new AppointmentMonths
+            appointmentMonths = new BindingList<AppointmentTypesByMonth>();
+            AppointmentTypesByMonth newMonths1 = new AppointmentTypesByMonth
             {
                 Month = "January",
                 NumberOfAppointments = counts[1]
             };
             appointmentMonths.Add(newMonths1);
-            AppointmentMonths newMonths2 = new AppointmentMonths 
+            AppointmentTypesByMonth newMonths2 = new AppointmentTypesByMonth 
             { 
                 Month = "February", 
                 NumberOfAppointments = counts[2] 
             };
             appointmentMonths.Add(newMonths2);
 
-            AppointmentMonths newMonths3 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths3 = new AppointmentTypesByMonth
             {
                 Month = "March",
                 NumberOfAppointments = counts[3]
             };
             appointmentMonths.Add(newMonths3);
-            AppointmentMonths newMonths4 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths4 = new AppointmentTypesByMonth
             {
                 Month = "April",
                 NumberOfAppointments = counts[4]
             };
             appointmentMonths.Add(newMonths4);
-            AppointmentMonths newMonths5 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths5 = new AppointmentTypesByMonth
             {
                 Month = "May",
                 NumberOfAppointments = counts[5]
             };
             appointmentMonths.Add(newMonths5);
-            AppointmentMonths newMonths6 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths6 = new AppointmentTypesByMonth
             {
                 Month = "June",
                 NumberOfAppointments = counts[6]
             };
             appointmentMonths.Add(newMonths6);
-            AppointmentMonths newMonths7 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths7 = new AppointmentTypesByMonth
             {
                 Month = "July",
                 NumberOfAppointments = counts[7]
             };
             appointmentMonths.Add(newMonths7);
 
-            AppointmentMonths newMonths8 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths8 = new AppointmentTypesByMonth
             {
                 Month = "August",
                 NumberOfAppointments = counts[8]
             };
             appointmentMonths.Add(newMonths8);
-            AppointmentMonths newMonths9 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths9 = new AppointmentTypesByMonth
             {
                 Month = "September",
                 NumberOfAppointments = counts[9]
             };
             appointmentMonths.Add(newMonths9);
-            AppointmentMonths newMonths10 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths10 = new AppointmentTypesByMonth
             {
                 Month = "October",
                 NumberOfAppointments = counts[10]
             };
             appointmentMonths.Add(newMonths10);
-            AppointmentMonths newMonths11 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths11 = new AppointmentTypesByMonth
             {
                 Month = "November",
                 NumberOfAppointments = counts[11]
             };
             appointmentMonths.Add(newMonths11);
-            AppointmentMonths newMonths12 = new AppointmentMonths
+            AppointmentTypesByMonth newMonths12 = new AppointmentTypesByMonth
             {
                 Month = "December",
                 NumberOfAppointments = counts[12]

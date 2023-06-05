@@ -53,7 +53,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
             if (CheckAppointment(Appointments.CurrentID) == true)
             {
                 DBConnection.SqlString = $"UPDATE appointment " +
-                    $"SET customerId = {AddUpdateAppointments.CustomerID}, userId = {AddUpdateAppointments.UserID}, type = \"{AddUpdateAppointments.AppointmentType}\", start \"{AddUpdateAppointments.StartTime.ToUniversalTime().ToString("yyyy-MM-dd H:mm:ss")}\", end = \"{AddUpdateAppointments.EndTime.ToUniversalTime().ToString("yyyy-MM-dd H:mm:ss")}\", lastUpdate = CURRENT_TIMESTAMP(), lastUpdateBy = \"{Login.UserName}\") " +
+                    $"SET customerId = {AddUpdateAppointments.CustomerID}, userId = {AddUpdateAppointments.UserID}, type = \"{AddUpdateAppointments.AppointmentType}\", start = \"{AddUpdateAppointments.StartTime.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss")}\", end = \"{AddUpdateAppointments.EndTime.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss")}\", lastUpdate = CURRENT_TIMESTAMP(), lastUpdateBy = \"{Login.UserName}\" " +
                     $"WHERE appointmentId = {AppointmentID}";
                 DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
                 DBConnection.Cmd.ExecuteNonQuery();

@@ -13,6 +13,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
     {
         public static Appointment appointment = new Appointment();
 
+        public static string CustomerName { set; get; }
+
         public int AppointmentID { set; get; }
 
         public string Type { set; get; }
@@ -80,19 +82,35 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                 }
         }
 
+        public static void CustomerFilter (string customer)
+        {
+            AppointmentsFiltered.Clear();
+            foreach (Appointment appointment in AllAppointments)
+            {
+                if (appointment.Customer == customer)
+                {
+                    AppointmentsFiltered.Add(appointment);
+                }
+            }
+        }
+
         public static bool TimeCheck()
         {
             bool doAlert = false;
             foreach (Appointment appointment in AllAppointments)
             {
-                DateTime date = appointment.Date.ToLocalTime();
-                if (date == DateTime.Now.Date)
+                if (appointment.Consultant == Login.UserName)
                 {
-                    TimeSpan time = appointment.StartTime - DateTime.Now.TimeOfDay;
-                    if (time.TotalMinutes <= 15)
+                    DateTime date = appointment.Date;
+                    if (date == DateTime.Now.Date)
                     {
-                        doAlert = true;
-                        break;
+                        TimeSpan time = appointment.StartTime - DateTime.Now.TimeOfDay;
+                        if (time.TotalMinutes <= 15 && time.TotalMinutes > 0)
+                        {
+                            CustomerName = appointment.Customer;
+                            doAlert = true;
+                            break;
+                        }
                     }
                 }
             }

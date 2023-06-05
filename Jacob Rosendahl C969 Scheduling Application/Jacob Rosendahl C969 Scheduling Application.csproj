@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Appointment.cs" />
-    <Compile Include="Classes\AppointmentMonths.cs" />
+    <Compile Include="Classes\AppointmentTypesByMonth.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\Customer.cs" />
     <Compile Include="Customers.cs">
