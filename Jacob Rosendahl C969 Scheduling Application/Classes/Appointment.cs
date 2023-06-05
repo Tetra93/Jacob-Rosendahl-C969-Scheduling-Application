@@ -13,13 +13,15 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
     {
         public static Appointment appointment = new Appointment();
 
+        public int AppointmentID { set; get; }
+
+        public string Type { set; get; }
+
         public int CustomerID { set; get; }
 
         public string Customer { set; get; }
 
         public string Consultant { set; get; }
-
-        public string Type { set; get; }
 
         public DateTime Date { set; get; }
 
@@ -33,7 +35,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
         public static void PopulateAppointments()
         {
-            DBConnection.SqlString = @"SELECT c.customerID, c.customerName, u.userName, a.type, a.start, a.end
+            AllAppointments.Clear();
+            DBConnection.SqlString = @"SELECT a.appointmentId, a.type, c.customerID, c.customerName, u.userName, a.start, a.end
                                        FROM customer c
                                        JOIN appointment a
                                        ON c.customerID = a.customerID
@@ -53,13 +56,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
                     AllAppointments.Add(new Appointment()
                     {
-                        CustomerID = DBConnection.Reader.GetInt32(0),
-                        Customer = DBConnection.Reader.GetString(1),
-                        Consultant = DBConnection.Reader.GetString(2),
-                        Type = DBConnection.Reader.GetString(3),
-                        Date = DBConnection.Reader.GetDateTime(4).Date,
-                        StartTime = localTime(DBConnection.Reader.GetDateTime(4).ToLocalTime()),
-                        EndTime = localTime(DBConnection.Reader.GetDateTime(5).ToLocalTime())
+                        AppointmentID = DBConnection.Reader.GetInt32(0),
+                        Type = DBConnection.Reader.GetString(1),
+                        CustomerID = DBConnection.Reader.GetInt32(2),
+                        Customer = DBConnection.Reader.GetString(3),
+                        Consultant = DBConnection.Reader.GetString(4),
+                        Date = DBConnection.Reader.GetDateTime(5).Date,
+                        StartTime = localTime(DBConnection.Reader.GetDateTime(5).ToLocalTime()),
+                        EndTime = localTime(DBConnection.Reader.GetDateTime(6).ToLocalTime())
                     });
                 }
             }
@@ -79,9 +83,9 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
         public static bool TimeCheck()
         {
             bool doAlert = false;
-            foreach (Appointment appointment in AppointmentsFiltered)
+            foreach (Appointment appointment in AllAppointments)
             {
-                DateTime date = appointment.Date;
+                DateTime date = appointment.Date.ToLocalTime();
                 if (date == DateTime.Now.Date)
                 {
                     TimeSpan time = appointment.StartTime - DateTime.Now.TimeOfDay;

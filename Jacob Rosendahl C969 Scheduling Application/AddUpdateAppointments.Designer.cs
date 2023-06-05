@@ -114,6 +114,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             // 
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datePicker.Location = new System.Drawing.Point(153, 115);
+            this.datePicker.MinDate = new System.DateTime(1800, 1, 1, 0, 0, 0, 0);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(121, 20);
             this.datePicker.TabIndex = 7;

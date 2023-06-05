@@ -8,11 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Jacob_Rosendahl_C969_Scheduling_Application.Classes;
+using Jacob_Rosendahl_C969_Scheduling_Application.Database;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
     public partial class AddUpdateAppointments : Form
     {
+        public static string CustomerName { set; get; }
+
+        public static string AppointmentType { set; get; }
+
+        public static string ConsultantName { set; get; }
+
+        public static DateTime Date { set; get; }
+
+        public static DateTime StartTime { set; get; }
+
+        public static DateTime EndTime { set; get; }
+
+        public static int CustomerID { set; get; }
+
+        public static int UserID { set; get; }
+
+
         public AddUpdateAppointments()
         {
             InitializeComponent();
@@ -28,40 +46,107 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 consultantName.Items.Add(user);
             }
+            if (this.Text == "New Appointment")
+            {
+                datePicker.MinDate = DateTime.Now;
+                startTimePicker.MinDate = DateTime.Now;
+                endTimePicker.MinDate = DateTime.Now;
+            }
+            else if (this.Text == "Update Appointment")
+            {
+                customerName.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Customer;
+                CustomerName = customerName.Text;
+                appointmentTypeTextBox.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Type;
+                AppointmentType = appointmentTypeTextBox.Text;
+                consultantName.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Consultant;
+                ConsultantName = consultantName.Text;
+                datePicker.Value = Appointment.AllAppointments[Appointments.CurrentID - 1].Date;
+                Date = datePicker.Value.Date;
+                startTimePicker.Value = DateTime.Parse(Appointment.AllAppointments[Appointments.CurrentID - 1].StartTime.ToString());
+                StartTime = startTimePicker.Value;
+                endTimePicker.Value = DateTime.Parse(Appointment.AllAppointments[Appointments.CurrentID - 1].EndTime.ToString());
+                EndTime = endTimePicker.Value;
+            }
         }
 
         private void CustomerName_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            CustomerID = customerName.SelectedIndex + 1;
+            CustomerName = customerName.Text;
         }
 
         private void AppointmentTypeTextBox_TextChanged(object sender, EventArgs e)
         {
-
+            AppointmentType = appointmentTypeTextBox.Text;
         }
 
         private void ConsultantName_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            UserID = consultantName.SelectedIndex + 1;
+            ConsultantName = consultantName.Text;
         }
 
         private void DatePicker_ValueChanged(object sender, EventArgs e)
         {
-
+            Date = datePicker.Value;
+            startTimePicker.Value = Date.AddSeconds(1);
+            endTimePicker.Value = Date.AddSeconds(2);
         }
 
         private void StartTimePicker_ValueChanged(object sender, EventArgs e)
         {
-
+            StartTime = startTimePicker.Value;
+            endTimePicker.MinDate = startTimePicker.Value.AddSeconds(1);
         }
 
         private void EndTimePicker_ValueChanged(object sender, EventArgs e)
         {
-
+            EndTime = endTimePicker.Value;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    if (string.IsNullOrWhiteSpace(textBox.Text))
+                    {
+                        MessageBox.Show("Please specify the appointment type.", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                }
+                else if (control is ComboBox comboBox)
+                {
+                    if (string.IsNullOrWhiteSpace(comboBox.Text))
+                    {
+                        MessageBox.Show("Please select both a customer and consultant", "Empty fields", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                }
+                else if (control is DateTimePicker dateTimePicker)
+                {
+                    if (dateTimePicker.Name == "datePicker" && (dateTimePicker.Value.Date < DateTime.Now.Date))
+                    {
+                        MessageBox.Show("Date cannot be earlier than the current date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                    else if (dateTimePicker.Name.Contains("Time") && ((dateTimePicker.Value.TimeOfDay.Hours > 20) || (dateTimePicker.Value.TimeOfDay.Hours < 8)))
+                    {
+                        MessageBox.Show("Please select appointment times within business hours. Business are from 8AM to 8PM", "Invalid Time", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+                }
+            }
+            if (this.Text == "New Appointment")
+            {
+                DBAppointment.AddAppointment();
+            }
+            else if (this.Text == "Update Appointment")
+            {
+                DBAppointment.UpdateAppointment();
+            }
+            Appointment.PopulateAppointments();
             this.Close();
         }
 

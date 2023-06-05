@@ -94,6 +94,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             }
         }
 
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+        }
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddUpdateCustomer addModifyCustomer = new AddUpdateCustomer();

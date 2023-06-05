@@ -9,12 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Jacob_Rosendahl_C969_Scheduling_Application.Classes;
+using Jacob_Rosendahl_C969_Scheduling_Application.Database;
 
 namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
     public partial class Appointments : Form
     {
         public static Appointments appointments;
+
+        public static int CurrentID { set; get; }
+
         public Appointments()
         {
             InitializeComponent();
@@ -84,11 +88,14 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
                 fromDate.Enabled = true;
                 toDate.Enabled = true;
                 Appointment.AppointmentsFiltered.Clear();
+                fromDate.MinDate = DateTime.Now;
+                toDate.MinDate = DateTime.Now;
             }
         }
 
         private void FromDate_ValueChanged(object sender, EventArgs e)
         {
+            toDate.MinDate = fromDate.Value;
             Appointment.AppointmentsFiltered.Clear();
             try
             {
@@ -135,9 +142,32 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             }
         }
 
+        private void DataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            dataGridView1.ClearSelection();
+        }
+
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-
+            if (dataGridView1.CurrentRow != null)
+            {
+                if (dataGridView1.SelectedRows.Count == 1)
+                {
+                    CurrentID = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+                    updateButton.Enabled = true;
+                    deleteButton.Enabled = true;
+                }
+                else
+                {
+                    updateButton.Enabled = false;
+                    deleteButton.Enabled = false;
+                }
+            }
+            else
+            {
+                updateButton.Enabled = false;
+                deleteButton.Enabled = false;
+            }
         }
 
         private void NewButton_Click(object sender, EventArgs e)
@@ -158,7 +188,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-
+            DBAppointment.DeleteAppointment();
+            Appointment.PopulateAppointments();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -169,6 +200,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private void Appointments_FormClosing(object sender, FormClosingEventArgs e)
         {
             HomeMenu.homeMenu.Show();
+        }
+
+        private void Appointments_Shown(object sender, EventArgs e)
+        {
+            dataGridView1.Refresh();
         }
 
     }

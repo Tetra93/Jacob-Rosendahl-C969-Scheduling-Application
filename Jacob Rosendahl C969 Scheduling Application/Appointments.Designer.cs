@@ -37,6 +37,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.updateButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.otherRadio = new System.Windows.Forms.RadioButton();
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.fromDate = new System.Windows.Forms.DateTimePicker();
@@ -44,8 +46,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.allRadio = new System.Windows.Forms.RadioButton();
             this.currentWeekRadio = new System.Windows.Forms.RadioButton();
             this.currentMonthRadio = new System.Windows.Forms.RadioButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -74,10 +74,13 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(12, 62);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(477, 182);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.TabStop = false;
+            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridView1_DataBindingComplete);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.DataGridView1_SelectionChanged);
             // 
             // newButton
@@ -135,6 +138,24 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(477, 56);
             this.panel1.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "From";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(248, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "To";
             // 
             // otherRadio
             // 
@@ -213,24 +234,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.currentMonthRadio.UseVisualStyleBackColor = true;
             this.currentMonthRadio.CheckedChanged += new System.EventHandler(this.CurrentMonthRadio_CheckedChanged);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(248, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "To";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "From";
-            // 
             // Appointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,6 +249,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.Name = "Appointments";
             this.Text = "Appointments";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Appointments_FormClosing);
+            this.Shown += new System.EventHandler(this.Appointments_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
