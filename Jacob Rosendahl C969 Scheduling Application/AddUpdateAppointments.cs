@@ -138,6 +138,10 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
                     }
                 }
             }
+            if (Appointment.AppointmentOverlapCheck() == true)
+            {
+                return;
+            }
             if (this.Text == "New Appointment")
             {
                 DBAppointment.AddAppointment();

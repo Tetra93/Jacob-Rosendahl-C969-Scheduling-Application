@@ -9,19 +9,24 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 {
     class AppointmentTypesByMonth
     {
+
+        public string Type { set; get; }
         public string Month { set; get; }
+        public int Count { set; get; }
 
         public Dictionary<string, int> AppointmentTypes;
 
-        public static BindingList<AppointmentTypesByMonth> appointmentMonths;
+        public static List<AppointmentTypesByMonth> appointmentMonthsList;
+
+        public static BindingList<AppointmentTypesByMonth> appointmentMonthsBindingList;
 
         public static void CountMonths()
         {
-            if (appointmentMonths != null)
+            if (appointmentMonthsList != null)
             {
-                appointmentMonths.Clear();
+                appointmentMonthsList.Clear();
             }
-            appointmentMonths = new BindingList<AppointmentTypesByMonth>();
+            appointmentMonthsList = new List<AppointmentTypesByMonth>();
             AppointmentTypesByMonth newMonths1 = new AppointmentTypesByMonth
             {
                 Month = "January",
@@ -38,64 +43,64 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                     newMonths1.AppointmentTypes[appointment.Type]++;
                 }
             }
-            appointmentMonths.Add(newMonths1);
+            appointmentMonthsList.Add(newMonths1);
             AppointmentTypesByMonth newMonths2 = new AppointmentTypesByMonth 
             { 
                 Month = "February", 
             };
-            appointmentMonths.Add(newMonths2);
+            appointmentMonthsList.Add(newMonths2);
 
             AppointmentTypesByMonth newMonths3 = new AppointmentTypesByMonth
             {
                 Month = "March",
             };
-            appointmentMonths.Add(newMonths3);
+            appointmentMonthsList.Add(newMonths3);
             AppointmentTypesByMonth newMonths4 = new AppointmentTypesByMonth
             {
                 Month = "April",
             };
-            appointmentMonths.Add(newMonths4);
+            appointmentMonthsList.Add(newMonths4);
             AppointmentTypesByMonth newMonths5 = new AppointmentTypesByMonth
             {
                 Month = "May",
             };
-            appointmentMonths.Add(newMonths5);
+            appointmentMonthsList.Add(newMonths5);
             AppointmentTypesByMonth newMonths6 = new AppointmentTypesByMonth
             {
                 Month = "June",
             };
-            appointmentMonths.Add(newMonths6);
+            appointmentMonthsList.Add(newMonths6);
             AppointmentTypesByMonth newMonths7 = new AppointmentTypesByMonth
             {
                 Month = "July",
             };
-            appointmentMonths.Add(newMonths7);
+            appointmentMonthsList.Add(newMonths7);
 
             AppointmentTypesByMonth newMonths8 = new AppointmentTypesByMonth
             {
                 Month = "August",
             };
-            appointmentMonths.Add(newMonths8);
+            appointmentMonthsList.Add(newMonths8);
             AppointmentTypesByMonth newMonths9 = new AppointmentTypesByMonth
             {
                 Month = "September",
             };
-            appointmentMonths.Add(newMonths9);
+            appointmentMonthsList.Add(newMonths9);
             AppointmentTypesByMonth newMonths10 = new AppointmentTypesByMonth
             {
                 Month = "October",
             };
-            appointmentMonths.Add(newMonths10);
+            appointmentMonthsList.Add(newMonths10);
             AppointmentTypesByMonth newMonths11 = new AppointmentTypesByMonth
             {
                 Month = "November",
             };
-            appointmentMonths.Add(newMonths11);
+            appointmentMonthsList.Add(newMonths11);
             AppointmentTypesByMonth newMonths12 = new AppointmentTypesByMonth
             {
                 Month = "December",
             };
-            appointmentMonths.Add(newMonths12);
+            appointmentMonthsList.Add(newMonths12);
         }
     }
 }

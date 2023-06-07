@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Jacob_Rosendahl_C969_Scheduling_Application.Database;
 using MySql.Data.MySqlClient;
 
@@ -63,7 +64,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                         CustomerID = DBConnection.Reader.GetInt32(2),
                         Customer = DBConnection.Reader.GetString(3),
                         Consultant = DBConnection.Reader.GetString(4),
-                        Date = DBConnection.Reader.GetDateTime(5).Date,
+                        Date = DBConnection.Reader.GetDateTime(5).Date.ToLocalTime(),
                         StartTime = localTime(DBConnection.Reader.GetDateTime(5).ToLocalTime()),
                         EndTime = localTime(DBConnection.Reader.GetDateTime(6).ToLocalTime())
                     });
@@ -94,6 +95,41 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
             }
         }
 
+        public static bool AppointmentOverlapCheck()
+        {
+            bool overlap = false;
+            TimeSpan startTime = AddUpdateAppointments.StartTime.TimeOfDay;
+            TimeSpan endTime = AddUpdateAppointments.EndTime.TimeOfDay;
+            foreach (Appointment appointment in Appointment.AllAppointments)
+            {
+                if (appointment.AppointmentID != Appointments.CurrentID)
+                {
+                    if (appointment.Date.ToShortDateString() == AddUpdateAppointments.Date.ToShortDateString())
+                    {
+                        if ((((startTime >= appointment.StartTime) && (startTime <= appointment.EndTime)) || 
+                            ((endTime >= appointment.StartTime) && (endTime <= appointment.EndTime))) ||
+                            (((appointment.StartTime >= startTime) && (appointment.StartTime <= endTime)) ||
+                            ((appointment.EndTime >= startTime) && (appointment.EndTime <= endTime))))
+                        {
+                            
+                            if (appointment.Customer == AddUpdateAppointments.CustomerName)
+                            {
+                                MessageBox.Show($"Appointment time for {appointment.Customer} overlaps with AppointmentID #{appointment.AppointmentID} which is from {appointment.StartTime} to {appointment.EndTime}. Please choose a different time.");
+                                overlap = true;
+                                break;
+                            }
+                            else if (appointment.Consultant == AddUpdateAppointments.ConsultantName)
+                            {
+                                MessageBox.Show($"Appointment time for {appointment.Consultant} overlaps with AppointmentID #{appointment.AppointmentID} which is from {appointment.StartTime} to {appointment.EndTime}. Please choose a different time.");
+                                overlap = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            return overlap;
+        }
         public static bool TimeCheck()
         {
             bool doAlert = false;

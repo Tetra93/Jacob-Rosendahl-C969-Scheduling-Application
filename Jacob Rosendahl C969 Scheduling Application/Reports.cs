@@ -13,7 +13,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 {
     public partial class Reports : Form
     {
-
         public Reports()
         {
             InitializeComponent();
@@ -22,6 +21,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             reportTypeBox.Items.Add("Customer schedules");
         }
 
+
         private void ReportTypeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataGridView1.DataSource = string.Empty;
@@ -29,7 +29,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 peopleListBox.Visible = false;
                 AppointmentTypesByMonth.CountMonths();
-                dataGridView1.DataSource = AppointmentTypesByMonth.appointmentMonths;
+                dataGridView1.DataSource = AppointmentTypesByMonth.appointmentMonthsBindingList;
                 dataGridView1.Refresh();
             }
             else if(reportTypeBox.SelectedItem.ToString() == "Consultant schedules")
