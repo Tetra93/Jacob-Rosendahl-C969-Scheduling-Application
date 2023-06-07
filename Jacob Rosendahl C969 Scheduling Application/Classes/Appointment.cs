@@ -56,7 +56,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                     //that to a TimeSpan to display only the time. The lambda returns only the 
                     //TimeOfDay of the DateTime argument. The DateTime is given to it in local time.
                     Func<DateTime, TimeSpan> localTime = d => d.TimeOfDay;
-
+                    DateTime date = DBConnection.Reader.GetDateTime(5);
+                    if(date.Date != date.Date.ToLocalTime())
+                    {
+                        date = date.ToLocalTime();
+                    }
                     AllAppointments.Add(new Appointment()
                     {
                         AppointmentID = DBConnection.Reader.GetInt32(0),
@@ -64,9 +68,9 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                         CustomerID = DBConnection.Reader.GetInt32(2),
                         Customer = DBConnection.Reader.GetString(3),
                         Consultant = DBConnection.Reader.GetString(4),
-                        Date = DBConnection.Reader.GetDateTime(5).Date.ToLocalTime(),
+                        Date = date,
                         StartTime = localTime(DBConnection.Reader.GetDateTime(5).ToLocalTime()),
-                        EndTime = localTime(DBConnection.Reader.GetDateTime(6).ToLocalTime())
+                        EndTime = localTime(DBConnection.Reader.GetDateTime(6).ToLocalTime()),
                     });
                 }
             }
@@ -138,7 +142,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                 if (appointment.Consultant == Login.UserName)
                 {
                     DateTime date = appointment.Date;
-                    if (date == DateTime.Now.Date)
+                    if (date.Date == DateTime.Now.Date)
                     {
                         TimeSpan time = appointment.StartTime - DateTime.Now.TimeOfDay;
                         if (time.TotalMinutes <= 15 && time.TotalMinutes > 0)

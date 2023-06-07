@@ -16,7 +16,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         public Reports()
         {
             InitializeComponent();
-            reportTypeBox.Items.Add("Number of appointments by month");
+            reportTypeBox.Items.Add("Number of appointments by type by month");
             reportTypeBox.Items.Add("Consultant schedules");
             reportTypeBox.Items.Add("Customer schedules");
         }
@@ -25,7 +25,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private void ReportTypeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataGridView1.DataSource = string.Empty;
-            if (reportTypeBox.SelectedItem.ToString() == "Number of appointments by month")
+            if (reportTypeBox.SelectedItem.ToString() == "Number of appointments by type by month")
             {
                 peopleListBox.Visible = false;
                 AppointmentTypesByMonth.CountMonths();

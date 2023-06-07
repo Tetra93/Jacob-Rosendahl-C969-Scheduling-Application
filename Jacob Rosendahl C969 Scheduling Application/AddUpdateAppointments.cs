@@ -42,6 +42,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 customerName.Items.Add(customer.Name);
             }
+            typeBox.Items.Add("Presentation");
+            typeBox.Items.Add("Scrum");
+            typeBox.Items.Add("Planning");
+            typeBox.Items.Add("Review");
+
             foreach (string user in User.userList)
             {
                 consultantName.Items.Add(user);
@@ -56,8 +61,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 customerName.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Customer;
                 CustomerName = customerName.Text;
-                appointmentTypeTextBox.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Type;
-                AppointmentType = appointmentTypeTextBox.Text;
+                typeBox.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Type;
+                AppointmentType = typeBox.Text;
                 consultantName.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Consultant;
                 ConsultantName = consultantName.Text;
                 datePicker.Value = Appointment.AllAppointments[Appointments.CurrentID - 1].Date;
@@ -75,9 +80,9 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             CustomerName = customerName.Text;
         }
 
-        private void AppointmentTypeTextBox_TextChanged(object sender, EventArgs e)
+        private void TypeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AppointmentType = appointmentTypeTextBox.Text;
+            AppointmentType = typeBox.Text;
         }
 
         private void ConsultantName_SelectedIndexChanged(object sender, EventArgs e)
@@ -163,5 +168,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             Appointments.appointments.Show();
         }
+
     }
 }

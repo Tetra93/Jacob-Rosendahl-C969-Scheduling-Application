@@ -32,7 +32,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.label1 = new System.Windows.Forms.Label();
             this.customerName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.appointmentTypeTextBox = new System.Windows.Forms.TextBox();
             this.consultantName = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.endTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -43,6 +42,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.label6 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.typeBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -72,14 +72,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.label2.Size = new System.Drawing.Size(105, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Type of Appointment";
-            // 
-            // appointmentTypeTextBox
-            // 
-            this.appointmentTypeTextBox.Location = new System.Drawing.Point(153, 62);
-            this.appointmentTypeTextBox.Name = "appointmentTypeTextBox";
-            this.appointmentTypeTextBox.Size = new System.Drawing.Size(121, 20);
-            this.appointmentTypeTextBox.TabIndex = 3;
-            this.appointmentTypeTextBox.TextChanged += new System.EventHandler(this.AppointmentTypeTextBox_TextChanged);
             // 
             // consultantName
             // 
@@ -177,12 +169,23 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // typeBox
+            // 
+            this.typeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeBox.FormattingEnabled = true;
+            this.typeBox.Location = new System.Drawing.Point(153, 62);
+            this.typeBox.Name = "typeBox";
+            this.typeBox.Size = new System.Drawing.Size(121, 21);
+            this.typeBox.TabIndex = 14;
+            this.typeBox.SelectedIndexChanged += new System.EventHandler(this.TypeBox_SelectedIndexChanged);
+            // 
             // AddUpdateAppointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(445, 312);
+            this.Controls.Add(this.typeBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label6);
@@ -193,7 +196,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             this.Controls.Add(this.endTimePicker);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.consultantName);
-            this.Controls.Add(this.appointmentTypeTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.customerName);
             this.Controls.Add(this.label1);
@@ -211,7 +213,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox customerName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox appointmentTypeTextBox;
         private System.Windows.Forms.ComboBox consultantName;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker endTimePicker;
@@ -222,5 +223,6 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.ComboBox typeBox;
     }
 }
