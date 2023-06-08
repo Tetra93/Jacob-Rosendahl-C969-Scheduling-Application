@@ -44,7 +44,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                                        JOIN appointment a
                                        ON c.customerID = a.customerID
                                        JOIN user u
-                                       ON a.userID = u.userID";
+                                       ON a.userID = u.userID
+                                       ORDER BY a.appointmentId";
             DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
             DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
             if (DBConnection.Reader.HasRows)
@@ -106,7 +107,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
             TimeSpan endTime = AddUpdateAppointments.EndTime.TimeOfDay;
             foreach (Appointment appointment in Appointment.AllAppointments)
             {
-                if (appointment.AppointmentID != Appointments.CurrentID)
+                if (appointment.AppointmentID != Appointments.AppointmentID)
                 {
                     if (appointment.Date.ToShortDateString() == AddUpdateAppointments.Date.ToShortDateString())
                     {

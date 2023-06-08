@@ -14,7 +14,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
         public static bool CheckAppointment(int inputID)
         {
             bool appointmentExists = false;
-            DBConnection.SqlString = "SELECT appointmentID FROM appointment";
+            DBConnection.SqlString = "SELECT appointmentID FROM appointment ORDER BY appointmentId";
             DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
             using (DBConnection.Reader = DBConnection.Cmd.ExecuteReader())
             {
@@ -50,7 +50,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
 
         public static void UpdateAppointment()
         {
-            if (CheckAppointment(Appointments.CurrentID) == true)
+            if (CheckAppointment(Appointments.AppointmentID) == true)
             {
                 DBConnection.SqlString = $"UPDATE appointment " +
                     $"SET customerId = {AddUpdateAppointments.CustomerID}, userId = {AddUpdateAppointments.UserID}, type = \"{AddUpdateAppointments.AppointmentType}\", start = \"{AddUpdateAppointments.StartTime.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss")}\", end = \"{AddUpdateAppointments.EndTime.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss")}\", lastUpdate = CURRENT_TIMESTAMP(), lastUpdateBy = \"{Login.UserName}\" " +
@@ -61,7 +61,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Database
         }
         public static void DeleteAppointment()
         {
-            if (CheckAppointment(Appointments.CurrentID) == true)
+            if (CheckAppointment(Appointments.AppointmentID) == true)
             {
                 DBConnection.SqlString = $"DELETE FROM appointment " +
                     $"WHERE appointmentId = {AppointmentID}";

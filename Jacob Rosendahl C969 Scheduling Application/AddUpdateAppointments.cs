@@ -59,25 +59,31 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             }
             else if (this.Text == "Update Appointment")
             {
-                customerName.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Customer;
+                customerName.Text = Appointment.AllAppointments[Appointments.CurrentID].Customer;
                 CustomerName = customerName.Text;
-                typeBox.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Type;
+                typeBox.Text = Appointment.AllAppointments[Appointments.CurrentID].Type;
                 AppointmentType = typeBox.Text;
-                consultantName.Text = Appointment.AllAppointments[Appointments.CurrentID - 1].Consultant;
+                consultantName.Text = Appointment.AllAppointments[Appointments.CurrentID].Consultant;
                 ConsultantName = consultantName.Text;
-                datePicker.Value = Appointment.AllAppointments[Appointments.CurrentID - 1].Date;
+                datePicker.Value = Appointment.AllAppointments[Appointments.CurrentID].Date;
                 Date = datePicker.Value.Date;
-                startTimePicker.Value = DateTime.Parse(Appointment.AllAppointments[Appointments.CurrentID - 1].StartTime.ToString());
+                startTimePicker.Value = DateTime.Parse(Appointment.AllAppointments[Appointments.CurrentID].StartTime.ToString()).AddDays(1);
                 StartTime = startTimePicker.Value;
-                endTimePicker.Value = DateTime.Parse(Appointment.AllAppointments[Appointments.CurrentID - 1].EndTime.ToString());
+                endTimePicker.Value = DateTime.Parse(Appointment.AllAppointments[Appointments.CurrentID].EndTime.ToString()).AddDays(1);
                 EndTime = endTimePicker.Value;
             }
         }
 
         private void CustomerName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CustomerID = customerName.SelectedIndex + 1;
             CustomerName = customerName.Text;
+            foreach (Customer customer in Customer.Customers)
+            {
+                if (customer.Name == CustomerName)
+                {
+                    CustomerID = customer.CustomerID;
+                }
+            }
         }
 
         private void TypeBox_SelectedIndexChanged(object sender, EventArgs e)

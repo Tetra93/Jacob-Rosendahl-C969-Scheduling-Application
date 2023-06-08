@@ -19,6 +19,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         public static int CurrentID { set; get; }
 
+        public static int AppointmentID { set; get; }
+
         public Appointments()
         {
             InitializeComponent();
@@ -153,7 +155,8 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 if (dataGridView1.SelectedRows.Count == 1)
                 {
-                    CurrentID = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
+                    CurrentID = dataGridView1.CurrentRow.Index;
+                    AppointmentID = int.Parse(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[0].Value.ToString());
                     updateButton.Enabled = true;
                     deleteButton.Enabled = true;
                 }
