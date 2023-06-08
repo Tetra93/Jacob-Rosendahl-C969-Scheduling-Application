@@ -155,5 +155,12 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
                 }
             }
         }
+
+        public override string ToString() =>
+            $"{Month}, " +
+            $"{Presentation}, " +
+            $"{Planning}, " +
+            $"{Scrum}, " +
+            $"{Review}";
     }
 }

@@ -32,7 +32,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
                 dataGridView1.DataSource = AppointmentTypesByMonth.appointmentMonthsBindingList;
                 dataGridView1.Refresh();
             }
-            else if(reportTypeBox.SelectedItem.ToString() == "Consultant schedules")
+            else if (reportTypeBox.SelectedItem.ToString() == "Consultant schedules")
             {
                 peopleListBox.Items.Clear();
                 foreach (string user in User.userList)
@@ -41,10 +41,10 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
                 }
                 peopleListBox.Visible = true;
             }
-            if(reportTypeBox.SelectedItem.ToString() == "Customer schedules")
+            if (reportTypeBox.SelectedItem.ToString() == "Customer schedules")
             {
                 peopleListBox.Items.Clear();
-                foreach(Customer customer in Customer.Customers)
+                foreach (Customer customer in Customer.Customers)
                 {
                     peopleListBox.Items.Add(customer.Name);
                 }
@@ -72,7 +72,41 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-
+            dataGridView1.ClearSelection();
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Green;
+            int searchCount = 0;
+            string searchValue = searchTextBox.Text.ToString();
+            if (!string.IsNullOrWhiteSpace(searchValue))
+            {
+                if (dataGridView1.DataSource == AppointmentTypesByMonth.appointmentMonthsBindingList)
+                    for (int i = 0; i < AppointmentTypesByMonth.appointmentMonthsBindingList.Count; i++)
+                    {
+                        if (AppointmentTypesByMonth.appointmentMonthsBindingList[i].ToString().ToUpper().Contains(searchValue.ToUpper()))
+                        {
+                            searchCount++;
+                            dataGridView1.Rows[i].Selected = true;
+                        }
+                    }
+                else if (dataGridView1.DataSource == Appointment.AppointmentsFiltered)
+                {
+                    for (int i = 0; i < Appointment.AppointmentsFiltered.Count; i++)
+                    {
+                        if (Appointment.AppointmentsFiltered[i].ToString().ToUpper().Contains(searchValue.ToUpper()))
+                        {
+                            searchCount++;
+                            dataGridView1.Rows[i].Selected = true;
+                        }
+                    }
+                }
+                if (searchCount == 0)
+                {
+                    MessageBox.Show("No results found.");
+                }
+                else
+                {
+                    MessageBox.Show($"{searchCount} results found");
+                }
+            }
         }
 
         private void SearchTextBox_KeyDown(object sender, KeyEventArgs e)
@@ -81,6 +115,17 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
             {
                 searchButton.PerformClick();
             }
+        }
+
+        private void SearchTextBox_Validated(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.DodgerBlue;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -92,6 +137,5 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application
         {
             HomeMenu.homeMenu.Show();
         }
-
     }
 }

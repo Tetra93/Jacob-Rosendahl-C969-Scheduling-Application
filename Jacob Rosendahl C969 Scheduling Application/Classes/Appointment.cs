@@ -156,5 +156,13 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
             }
             return doAlert;
         }
+        public override string ToString() =>
+            $"{AppointmentID}, " +
+            $"{Type}, " +
+            $"{CustomerID}, " +
+            $"{CustomerName}, " +
+            $"{Consultant}, " +
+            $"{StartTime}, " +
+            $"{EndTime}";
     }
 }

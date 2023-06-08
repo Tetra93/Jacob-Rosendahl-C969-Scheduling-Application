@@ -59,11 +59,11 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
         }
 
         public override string ToString() =>
-            $"CustomerID = {CustomerID}, " +
-            $"Name = {Name}, " +
-            $"Address = {Address}, " +
-            $"Phone = {Phone}, " +
-            $"City = {City}, " +
-            $"Country = {Country}";
+            $"{CustomerID}, " +
+            $"{Name}, " +
+            $"{Address}, " +
+            $"{Phone}, " +
+            $"{City}, " +
+            $"{Country}";
     }
 }

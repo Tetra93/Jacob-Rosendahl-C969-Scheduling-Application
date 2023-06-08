@@ -24,6 +24,7 @@ namespace Jacob_Rosendahl_C969_Scheduling_Application.Classes
 
         public static void UserLogin()
         {
+            userList.Clear();
             DBConnection.SqlString = @"SELECT userName, password FROM user";
             DBConnection.Cmd = new MySqlCommand(DBConnection.SqlString, DBConnection.Conn);
             DBConnection.Reader = DBConnection.Cmd.ExecuteReader();
